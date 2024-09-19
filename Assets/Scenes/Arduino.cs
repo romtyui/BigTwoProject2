@@ -6,11 +6,7 @@ using System;
 
 public class Arduino : MonoBehaviour
 {
-    public GameObject remind;
-    public GameObject final;
-    public SerialPort sp = new SerialPort("com3", 9600);
-    private bool remember = false;
-    private bool recover = false;
+    public SerialPort sp = new SerialPort("com3", 115200);
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +16,8 @@ public class Arduino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        string date = sp.ReadLine();
+        
     }
 
 }
