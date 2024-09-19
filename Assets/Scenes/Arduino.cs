@@ -34,7 +34,7 @@ public class Arduino : MonoBehaviour
                       // num[i] = float.Parse(WORD[i]);
                       */
         }
-        //   num[] = date.
+        this.transform.position = new Vector3(num[1]/10, num[2]/10);
     }
 
 }
