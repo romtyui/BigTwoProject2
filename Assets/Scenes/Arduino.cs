@@ -4,14 +4,18 @@ using UnityEngine;
 using System.IO.Ports;
 using System;
 using Palmmedia.ReportGenerator.Core.Common;
+using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class Arduino : MonoBehaviour
 {
     public SerialPort sp = new SerialPort("com3", 115200);
     //public float[] num;
+    private float Pos;
     //public float time;
     //public string[] WORD ,newdata;//1.¨¤«×2.x¶b3.Y¶b4.Z¶b
     // Start is called before the first frame update
+
     void Start()
     {
         sp.Open();
@@ -26,7 +30,7 @@ public class Arduino : MonoBehaviour
             {
                // for (int i = 0; i < 4; i++)
                // {
-                    string date = sp.ReadLine();
+                   string date = sp.ReadLine();
                     //time += Time.deltaTime;
                     Debug.Log(date);
 
@@ -39,9 +43,13 @@ public class Arduino : MonoBehaviour
                 //}
                 //}
                 float Pos=float.Parse(date);
-                if(date != null)
+                if(Pos != 0)
                 {
-                    this.transform.position = new Vector3(Pos, 0, 0);
+                    //this.transform.position = new Vector3(Pos, 0, 0);
+                    // this.transform.Rotate(Vector3.right * this.transform.rotation.x * Pos);
+                    //                    this.transform.rotation = this.transform.rotation +  Quaternion.Angle;
+
+                    this.transform.Rotate(Pos, 0, 0,Space.Self);
                 }
             }
             catch
