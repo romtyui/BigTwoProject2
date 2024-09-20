@@ -30,13 +30,13 @@ public class Arduino : MonoBehaviour
                     //time += Time.deltaTime;
                     Debug.Log(date);
 
-                    int uCount = sp.BytesToRead;
-                    if (uCount != 0)
-                    {
-                        byte[] btAryBuffer = new byte[uCount];
-                        sp.Read(btAryBuffer, 0, uCount);
+                   // int uCount = sp.BytesToRead;
+                    //if (uCount != 0)
+                    //{
+                    //    byte[] btAryBuffer = new byte[uCount];
+                    //    sp.Read(btAryBuffer, 0, uCount);
 
-                    }
+                    //}
                 }
             }
             catch
