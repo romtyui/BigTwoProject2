@@ -43,7 +43,7 @@ public class Arduino : MonoBehaviour
                 //}
                 //}
                 float Pos=float.Parse(date);
-                if(Pos != 0)
+                if(Pos > 0 || Pos<0)
                 {
                     //this.transform.position = new Vector3(Pos, 0, 0);
                     // this.transform.Rotate(Vector3.right * this.transform.rotation.x * Pos);
