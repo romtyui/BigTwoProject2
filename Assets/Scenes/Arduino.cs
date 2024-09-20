@@ -8,9 +8,9 @@ using Palmmedia.ReportGenerator.Core.Common;
 public class Arduino : MonoBehaviour
 {
     public SerialPort sp = new SerialPort("com3", 115200);
-    public float[] num;
-    public float time;
-    public string[] WORD ,newdata;//1.¨¤«×2.x¶b3.Y¶b4.Z¶b
+    //public float[] num;
+    //public float time;
+    //public string[] WORD ,newdata;//1.¨¤«×2.x¶b3.Y¶b4.Z¶b
     // Start is called before the first frame update
     void Start()
     {
@@ -24,19 +24,24 @@ public class Arduino : MonoBehaviour
         {
             try
             {
-                for (int i = 0; i < 4; i++)
-                {
+               // for (int i = 0; i < 4; i++)
+               // {
                     string date = sp.ReadLine();
                     //time += Time.deltaTime;
                     Debug.Log(date);
 
-                   // int uCount = sp.BytesToRead;
-                    //if (uCount != 0)
-                    //{
-                    //    byte[] btAryBuffer = new byte[uCount];
-                    //    sp.Read(btAryBuffer, 0, uCount);
+                // int uCount = sp.BytesToRead;
+                //if (uCount != 0)
+                //{
+                //    byte[] btAryBuffer = new byte[uCount];
+                //    sp.Read(btAryBuffer, 0, uCount);
 
-                    //}
+                //}
+                //}
+                float Pos=float.Parse(date);
+                if(date != null)
+                {
+                    this.transform.position = new Vector3(Pos, 0, 0);
                 }
             }
             catch
