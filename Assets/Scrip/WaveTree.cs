@@ -6,7 +6,7 @@ using UnityEngine;
 public class WaveTree : MonoBehaviour
 {
     // Start is called before the first frame update
-    public SerialPort sp = new SerialPort("com5", 115200);
+    public SerialPort sp = new SerialPort("com3", 115200);
     //public float[] num;
 
     public float WaveVector,Vector,timer,oringnaltimer;
