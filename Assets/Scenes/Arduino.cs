@@ -75,12 +75,13 @@ public class Arduino : MonoBehaviour
                 {
                     if (transpos > 0 || transpos < 0)
                     {
+                        int gap=transpos - Olddate;
                         //this.transform.position = new Vector3(Pos, 0, 0);
                         // this.transform.Rotate(Vector3.right * this.transform.rotation.x * Pos);
                         //                    this.transform.rotation = this.transform.rotation +  Quaternion.Angle;
                         //if (time % 1.0f ==0)
                         //{
-                        this.transform.Rotate(transpos, 0, 0, Space.Self);
+                        this.transform.Rotate(0, gap/3.5f,0 , Space.Self);
                         //}
                     }
                 }
