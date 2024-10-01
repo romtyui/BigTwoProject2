@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boneTest.fbx_Collection 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 385514164b83a5f4fbd5ae73be6c60ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2515896139134104517, guid: 385514164b83a5f4fbd5ae73be6c60ea, type: 3}
       propertyPath: m_LocalScale.x
       value: 2037.4509
