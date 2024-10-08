@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com3", 115200);
+    public SerialPort sp = new SerialPort("com5", 115200);
     //public float[] num;
     private float Pos;
     public float time;
@@ -81,7 +81,7 @@ public class Arduino : MonoBehaviour
                         //                    this.transform.rotation = this.transform.rotation +  Quaternion.Angle;
                         //if (time % 1.0f ==0)
                         //{
-                        this.transform.Rotate(0, gap/3.5f,0 , Space.Self);
+                        this.transform.Rotate(0,-gap/3.5f,0 , Space.Self);
                         //}
                     }
                 }
