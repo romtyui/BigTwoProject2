@@ -11,6 +11,7 @@ public class WaveTree : MonoBehaviour
 
     public float WaveVector,Vector,timer,oringnaltimer;
     private string Newdate;
+    private float lastWaveVector;
     //public string[] WORD ,newdata;//1.¨¤«×2.x¶b3.Y¶b4.Z¶b
     // Start is called before the first frame update
 
@@ -42,7 +43,16 @@ public class WaveTree : MonoBehaviour
         {
             if(WaveVector != null) 
             {
-                this.transform.Rotate(Vector*WaveVector, 0, Vector * WaveVector, Space.Self);
+                
+                 
+                if (WaveVector != lastWaveVector)
+                {
+                    if(this.transform.localRotation.z >=13 && this.transform.localRotation.z <= 33)
+                    {
+                        this.transform.localEulerAngles += new Vector3(0, 0, WaveVector);
+                    }
+                    lastWaveVector = WaveVector;
+                }   
             }
             oringnaltimer = timer;
         }
