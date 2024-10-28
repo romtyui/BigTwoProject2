@@ -62,12 +62,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FPS: 16
-    - _Mash_Speed: 5.03
+    - _FPS: 24
+    - _Mash_Speed: 3.75
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Ripple_Strengh: 0.97
-    - _Ripple_Tile: 4
+    - _Ripple_Strengh: 0.83
+    - _Ripple_Tile: 29.73
     - _Smoothness: 0.39
     - _Speed: 0
     - _Tiling: 2
