@@ -11,24 +11,24 @@ public class LightingCode : MonoBehaviour
     float groundwidth, groundlength;
     Light thunderLight;
     public Color colorlight;
-    [Header("??氨痙程??")]
+    [Header("皗筿氨痙程丁")]
     public float maxThunderDur = 0.5f;
     float thunderDuration;
-    [Header("?畓氨痙程??")]
+    [Header("挡氨痙程丁")]
     public float maxThunderBreakDur = 0.5f;
     float thunderBreakDuration;
-    [Header("碻?? Q ")]
+    [Header("碻吏单丁 ")]
     public float maxThunderRestDur;
     float thunderRestDur;
     int serialThunderTime;
-    [Header("?Ω?")]
+    [Header("皗筿Ω计")]
     public int maxSerialThunderTime = 5;
 
-    [Header("程?璖?")]
+    [Header("程獹")]
     public float IntensityMaxOne = 6f;
     public float IntensityMaxTwo = 10f;
     float Max;
-    [Header("程?璖?")]
+    [Header("程獹")]
     public float IntensityMinOne = 1.5f;
     public float IntensityMinTwo = 3f;
     float Min;
@@ -40,6 +40,7 @@ public class LightingCode : MonoBehaviour
     }
     void Start()
     {
+        //秙北
         StartCoroutine(Thunder());
     }
     void FixedUpdate()
