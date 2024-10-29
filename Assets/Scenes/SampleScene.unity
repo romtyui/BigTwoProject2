@@ -486,6 +486,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8905e73fbd478334c87c306c80653e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaveVector: 0
+  Vector: 0
+  timer: 0
+  oringnaltimer: 0
   ground: {fileID: 0}
   colorlight: {r: 1, g: 0.9568628, b: 0.83921576, a: 0}
   maxThunderDur: 0.1

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine;
 using System.Collections;
+using System.IO.Ports;
 
 public class LightingCode : MonoBehaviour
 {
+    public SerialPort sp = new SerialPort("com3", 115200);
+    public float WaveVector, Vector, timer, oringnaltimer;
+    private string Newdate;
+
     public Transform ground;
     // Start is called before the first frame update
     float groundwidth, groundlength;
@@ -40,13 +45,36 @@ public class LightingCode : MonoBehaviour
     }
     void Start()
     {
-        //«ö¶s±±¨î
-        StartCoroutine(Thunder());
+        
+        sp.Open();
     }
     void FixedUpdate()
     {
         thunderLight.color = colorlight;
+        try
+        {
+            if (sp.IsOpen)
+            {
+                Newdate = sp.ReadLine();
+                WaveVector = int.Parse(Newdate);
+            }
+        }
+        catch
+        {
+
+        }
+        finally
+        {
+            timer += Time.deltaTime;
+        }
+
+        if(WaveVector != 0)
+        {
+            StartCoroutine(Thunder());
+        }
     }
+
+
     IEnumerator Thunder()
     {
         while (true)
