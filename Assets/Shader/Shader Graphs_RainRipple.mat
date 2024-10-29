@@ -66,11 +66,11 @@ Material:
     - _Mash_Speed: 3.75
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Ripple_Strengh: 0.83
-    - _Ripple_Tile: 29.73
+    - _Ripple_Strengh: 0.1
+    - _Ripple_Tile: 30.77
     - _Smoothness: 0.39
     - _Speed: 0
-    - _Tiling: 2
+    - _Tiling: 10.07
     m_Colors:
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
