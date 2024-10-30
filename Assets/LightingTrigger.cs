@@ -6,7 +6,7 @@ using System.Threading;
 
 public class LightingTrigger : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com3", 115200);
+    public SerialPort sp = new SerialPort("com5", 115200);
     private Thread serialThread;
     public int WaveVector;
     private string Newdate;

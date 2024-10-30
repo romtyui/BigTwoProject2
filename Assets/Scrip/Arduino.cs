@@ -10,7 +10,7 @@ using System.Threading;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com3", 115200);
+    public SerialPort sp = new SerialPort("com5", 38400);
     private Thread serialThread;
     //public float[] num;
     private float Pos;
@@ -57,9 +57,9 @@ public class Arduino : MonoBehaviour
             {
                 Newdate = sp.ReadLine();
 
-                 Pos = float.Parse(Newdate);
-
-                 transpos = (int)Pos;
+                //Pos = float.Parse(Newdate);
+                float.TryParse(Newdate, out Pos);
+                transpos = (int)Pos;
 
                // int.TryParse(Newdate, out WaveVector);
 
