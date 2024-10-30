@@ -10,7 +10,8 @@ public class LightingTrigger : MonoBehaviour
     private Thread serialThread;
     public int WaveVector;
     private string Newdate;
-    private float xx;
+    private string Tconfirm;
+
     public Behaviour lightingcode;
 
     public bool triggerLighting = false;  // 用於主執行緒更新狀態的旗標
@@ -57,13 +58,15 @@ public class LightingTrigger : MonoBehaviour
         {
             if (sp.IsOpen)
             {
+                Tconfirm = sp.ReadLine();
                 Newdate = sp.ReadLine();
                 int.TryParse(Newdate, out WaveVector);
-                xx = 1.2f;
+                
+                Debug.Log("Tconfirm:" + Tconfirm);
                 Debug.Log("Newdata:" + WaveVector);
 
                 // 檢查條件是否滿足，然後設定旗標
-                if (WaveVector == 0)
+                if (Tconfirm == "T" && WaveVector == 0 )
                 {
                     triggerLighting = true;
                 }
