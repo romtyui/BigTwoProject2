@@ -14,11 +14,13 @@ public class LeaFRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Transform>().LookAt(target);
+        GetComponent<Transform>().LookAt(GetSymmetryPoint());
     }
-    Vector3 Target_transform() 
+    Vector3 GetSymmetryPoint()
     {
-        return new Vector3(0,target.transform.rotation.y +180,0);
-
+        return new Vector3(
+            transform.position.x * 2 - target.position.x,
+            transform.position.y * 2 - target.position.y,
+            transform.position.z * 2 - target.position.z);
     }
 }
