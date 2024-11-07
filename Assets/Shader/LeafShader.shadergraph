@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "c73a0df2c7164fce9b4b6fddf70ad53c"
+        },
+        {
+            "m_Id": "59efebf68f1b42b99bfa329466768f78"
         }
     ],
     "m_Keywords": [],
@@ -71,11 +74,28 @@
         },
         {
             "m_Id": "fe18015a7fca40d6b9e2890fed2f28a5"
+        },
+        {
+            "m_Id": "2ae599e574c848149eea65f4fe4c92dc"
         }
     ],
     "m_GroupDatas": [],
     "m_StickyNoteDatas": [],
     "m_Edges": [
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "2ae599e574c848149eea65f4fe4c92dc"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "d6705fed700d4f609712947a533a9bcd"
+                },
+                "m_SlotId": 0
+            }
+        },
         {
             "m_OutputSlot": {
                 "m_Node": {
@@ -390,6 +410,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "2ae599e574c848149eea65f4fe4c92dc",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -181.31663513183595,
+            "y": 536.2833862304688,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "ad0ec73a53bb41d5ba7fbe5cb1134e6b"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "59efebf68f1b42b99bfa329466768f78"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "31cbcf035a4048a78a1b3a5a0c6ca965",
     "m_Group": {
@@ -481,7 +537,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.0,
+    "m_Value": 1.0800000429153443,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -635,6 +691,34 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "59efebf68f1b42b99bfa329466768f78",
+    "m_Guid": {
+        "m_GuidSerialized": "692c0759-670e-4606-a781-c0b4351cf09a"
+    },
+    "m_Name": "AlohaClip",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "AlohaClip",
+    "m_DefaultReferenceName": "_AlohaClip",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -841,9 +925,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -196.6666717529297,
-            "y": 638.6666259765625,
-            "width": 209.33335876464845,
+            "x": -308.6666564941406,
+            "y": 638.0,
+            "width": 209.33331298828126,
             "height": 304.0
         }
     },
@@ -918,10 +1002,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -359.183349609375,
-            "y": 704.1834106445313,
-            "width": 0.0,
-            "height": 0.0
+            "x": -470.0000305175781,
+            "y": 699.3333129882813,
+            "width": 106.00003051757813,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -1172,6 +1256,9 @@
         },
         {
             "m_Id": "c73a0df2c7164fce9b4b6fddf70ad53c"
+        },
+        {
+            "m_Id": "59efebf68f1b42b99bfa329466768f78"
         }
     ]
 }
@@ -1225,6 +1312,21 @@
     "m_Property": {
         "m_Id": "c7234d892183454aa495c406db397ae2"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "ad0ec73a53bb41d5ba7fbe5cb1134e6b",
+    "m_Id": 0,
+    "m_DisplayName": "AlohaClip",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -1524,10 +1626,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": 12.666637420654297,
+            "y": 532.6666870117188,
+            "width": 200.00006103515626,
+            "height": 42.6666259765625
         }
     },
     "m_Slots": [

@@ -42,6 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alaph: 1
+    - _AlohaClip: 0.47
     - _Alpha: 0.87
     - _QueueControl: 0
     - _QueueOffset: 0
