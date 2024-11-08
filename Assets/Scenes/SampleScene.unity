@@ -5258,7 +5258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 38b68852578e12947be3be8e91213536, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8879528566716807029, guid: 38b68852578e12947be3be8e91213536, type: 3}
       propertyPath: m_LocalScale.x
@@ -5671,6 +5671,7 @@ GameObject:
   - component: {fileID: 953616232}
   - component: {fileID: 953616231}
   - component: {fileID: 953616234}
+  - component: {fileID: 953616235}
   m_Layer: 0
   m_Name: Directional Light (1)
   m_TagString: Untagged
@@ -5794,7 +5795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Version: 3
-  m_UsePipelineSettings: 1>
+  m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_RenderingLayers: 1
@@ -5804,8 +5805,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
-
-
 --- !u!114 &953616235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5823,7 +5822,6 @@ MonoBehaviour:
   Tconfirm: 
   lightingcode: {fileID: 953616231}
   triggerLighting: 0
-
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

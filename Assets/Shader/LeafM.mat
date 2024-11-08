@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LeafM
-  m_Shader: {fileID: 4800000, guid: af43928f71ef5b44588f31cde44a9555, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 27a3282e3d32ac64dadcf90a111984d1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,6 +23,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Leaf:
+        m_Texture: {fileID: 2800000, guid: e8b74432cb14c9e4b9f8b84ddbaf1a4a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _LeafM:
         m_Texture: {fileID: 2800000, guid: e8b74432cb14c9e4b9f8b84ddbaf1a4a, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -50,9 +54,11 @@ Material:
     - _Alpha: 0.87
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _alaph_clip: 0.497
     m_Colors:
     - _BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.2722499, g: 0.3165528, b: 0.3301887, a: 0}
+    - _LeafColo: {r: 0.09651208, g: 1, b: 0, a: 0}
     - _LeafColor: {r: 0.27450982, g: 0.509434, b: 0.094517596, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8378355693074894423
