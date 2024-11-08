@@ -11,7 +11,7 @@ public class WaveTree : MonoBehaviour
     //public float[] num;
 
     public float WaveVector,Vector,timer,oringnaltimer;
-    private string Newdate;
+    public static string Newdate;
     private float lastWaveVector;
     private float NewRot;
     private float OrginalRot;
@@ -26,22 +26,9 @@ public class WaveTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        try
-        {
-            if (sp.IsOpen)
-            {
-                Newdate = sp.ReadLine();
                 WaveVector = float.Parse(Newdate);
-            }
-        }
-        catch
-        {
-
-        }
-        finally
-        {
-            timer += Time.deltaTime;
-        }
+                 //timer += Time.deltaTime;
+     Debug.Log(WaveVector);
         if (oringnaltimer != timer)
         {
             if (WaveVector != null)
