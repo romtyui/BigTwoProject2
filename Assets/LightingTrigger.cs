@@ -6,11 +6,11 @@ using System.Threading;
 
 public class LightingTrigger : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com5", 115200);
+    public SerialPort sp = new SerialPort("com6", 115200);
     private Thread serialThread;
     public int WaveVector;
-    private string Newdate;
-    private string Tconfirm;
+    public string Newdate;
+    public string Tconfirm;
 
     public Behaviour lightingcode;
 
