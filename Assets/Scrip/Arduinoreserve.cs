@@ -12,6 +12,9 @@ public class Arduinoreserve : MonoBehaviour
     public string confirm;
 
     public LightingCode lightingcode;
+    public GameObject rain;
+    public GameObject raindot;
+    private Material material;
     //public Behaviour throwrock;
 
     public bool triggerLighting = false;  // 用於主執行緒更新狀態的旗標
@@ -20,6 +23,11 @@ public class Arduinoreserve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rain.SetActive(false);
+        Renderer renderer = raindot.GetComponent<Renderer>();
+        material = renderer.material;
+
+        material.SetFloat("_Ripple_Strengh", 0);
         try
         {
             sp.Open();
@@ -68,9 +76,11 @@ public class Arduinoreserve : MonoBehaviour
                     triggerLighting = true;
                 }
 
-                if(confirm =="S" && Newdate != null)
+                if(confirm =="R" && Newdate != null)
                 {
-                    WaveTree.Newdate = Newdate;
+                    rain.SetActive(true);
+                    material.SetFloat("_Ripple_Strengh", 0.1f);
+                    //WaveTree.Newdate = Newdate;
                 }
             }
             Thread.Sleep(10); // 控制讀取頻率，避免過度占用CPU

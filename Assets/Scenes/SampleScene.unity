@@ -5993,6 +5993,8 @@ MonoBehaviour:
   Newdate: 
   confirm: 
   lightingcode: {fileID: 953616231}
+  rain: {fileID: 969987301}
+  raindot: {fileID: 1001425118}
   triggerLighting: 0
 --- !u!1 &969987301
 GameObject:
