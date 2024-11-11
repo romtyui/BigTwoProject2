@@ -13,7 +13,9 @@ public class Arduinoreserve : MonoBehaviour
 
     public LightingCode lightingcode;
     public GameObject rain;
+    public bool raincheck;
     public GameObject raindot;
+    public bool raindotcheck;
     private Material material;
     //public Behaviour throwrock;
 
@@ -53,7 +55,13 @@ public class Arduinoreserve : MonoBehaviour
         {
             StartCoroutine(TriggerLightingEffect());
             triggerLighting = false;  // ­«¸mºX¼Ð
-            // lightingcode.enabled = false;
+            // lightingcode.enabled = false;   
+        }
+
+        if (raincheck /*|| raindotcheck*/ == true)
+        {
+            rain.SetActive(true);
+            material.SetFloat("_Ripple_Strengh", 0.1f);
         }
     }
 
@@ -76,10 +84,11 @@ public class Arduinoreserve : MonoBehaviour
                     triggerLighting = true;
                 }
 
-                if(confirm =="R" && Newdate != null)
+                if(confirm =="R")
                 {
-                    rain.SetActive(true);
-                    material.SetFloat("_Ripple_Strengh", 0.1f);
+                    raincheck = true;
+                    //raindotcheck = true;
+                    
                     //WaveTree.Newdate = Newdate;
                 }
             }
