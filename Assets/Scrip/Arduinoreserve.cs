@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 using System.Threading;
+using System.Runtime.CompilerServices;
+
 public class Arduinoreserve : MonoBehaviour
 {
     public SerialPort sp = new SerialPort("com5", 38400);
+    public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
-    public string Newdate;
+    public string sp4date;
     public string confirm;
 
     public LightingCode lightingcode;
@@ -20,7 +23,14 @@ public class Arduinoreserve : MonoBehaviour
     //public Behaviour throwrock;
 
     public bool triggerLighting = false;  // 用於主執行緒更新狀態的旗標
-
+    
+    
+    /*-----------------搖樹----------------------*/
+    public GameObject Wavetree;
+    public bool Wavetreecheck;
+    private Material treematerial;
+    public bool wavetreecheck;
+    /*-----------------搖樹----------------------*/
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +38,17 @@ public class Arduinoreserve : MonoBehaviour
         rain.SetActive(false);
         Renderer renderer = raindot.GetComponent<Renderer>();
         material = renderer.material;
-
         material.SetFloat("_Ripple_Strengh", 0);
+        /*-----------------搖樹----------------------*/
+        Renderer treerenderer = Wavetree.GetComponent<Renderer>();
+        treematerial = treerenderer.material;
+
+        /*-----------------搖樹----------------------*/
+        
         try
         {
             sp.Open();
+            sp4.Open();
             serialThread = new Thread(ReadSerialData);
             serialThread.Start();
         }
@@ -63,6 +79,16 @@ public class Arduinoreserve : MonoBehaviour
             rain.SetActive(true);
             material.SetFloat("_Ripple_Strengh", 0.1f);
         }
+
+        if(wavetreecheck == true)
+        {
+            treematerial.SetFloat("_WindDensity", 0.41f);
+            treematerial.SetFloat("_WindMovement", 3.4f);
+            treematerial.SetFloat("_WindStrength", 2.6f);
+            Vector2 offset = treematerial.GetVector("_Direction");
+            treematerial.SetVector("_Direction", new Vector4(WaveVector, 0.1f, 0, 0));
+            treematerial.SetFloat("_BlendStrength", 5f);
+        }
     }
 
     private void ReadSerialData()
@@ -72,8 +98,9 @@ public class Arduinoreserve : MonoBehaviour
             if (sp.IsOpen)
             {
                 confirm = sp.ReadLine();
-                Newdate = sp.ReadLine();
-                int.TryParse(Newdate, out WaveVector);//把Newdate轉成int放到waveVrctor
+                sp4date = sp.ReadLine();
+
+                int.TryParse(sp4date, out WaveVector);//把sp4date轉成int放到waveVrctor
 
                 Debug.Log("confirm:" + confirm);
                 Debug.Log("Newdata:" + WaveVector);
@@ -90,6 +117,11 @@ public class Arduinoreserve : MonoBehaviour
                     //raindotcheck = true;
                     
                     //WaveTree.Newdate = Newdate;
+                }
+
+                if(WaveVector != 0)
+                {
+                    wavetreecheck = true;
                 }
             }
             Thread.Sleep(10); // 控制讀取頻率，避免過度占用CPU

@@ -5234,6 +5234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66a0845152d9e24b933195a007bae96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &441774410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7421033346236238759, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+  m_PrefabInstance: {fileID: 1354008198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &541169624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11015,7 +11020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveVector: 0
-  Newdate: 
+  sp4date: 
   confirm: 
   lightingcode: {fileID: 953616231}
   rain: {fileID: 969987301}
@@ -11023,6 +11028,9 @@ MonoBehaviour:
   raindot: {fileID: 1001425118}
   raindotcheck: 0
   triggerLighting: 0
+  Wavetree: {fileID: 441774410}
+  Wavetreecheck: 0
+  wavetreecheck: 0
 --- !u!1 &969987301
 GameObject:
   m_ObjectHideFlags: 0
