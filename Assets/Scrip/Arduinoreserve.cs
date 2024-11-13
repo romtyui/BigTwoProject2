@@ -11,36 +11,53 @@ public class Arduinoreserve : MonoBehaviour
     public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
-    public string sp4date;
+    public string wavedate;
     public string confirm;
 
+    /*-------------------------下雨-------------------------*/
+    [Header("下雨")]
     public LightingCode lightingcode;
     public GameObject rain;
     public bool raincheck;
     public GameObject raindot;
     public bool raindotcheck;
-    private Material material;
-    //public Behaviour throwrock;
+    private Material rainmaterial;
+    /*-------------------------下雨-------------------------*/
 
     public bool triggerLighting = false;  // 用於主執行緒更新狀態的旗標
-    
-    
+
     /*-----------------搖樹----------------------*/
-    public GameObject Wavetree;
+    [Header("搖樹")]
+    public int treechoice;
+    public GameObject[] Wavetree;
     public bool Wavetreecheck;
     private Material treematerial;
     public bool wavetreecheck;
     /*-----------------搖樹----------------------*/
 
+    /*----------------丟熊熊----------------------*/
+    [Header("丟熊熊")]
+    public GameObject Rock;
+    public float RockX;
+    public float RockY;
+    public float RockZ;
+    public bool throwcheck = false;
+    public float throwrocktotalTime = 3;
+    public float gravty = 9.8f;
+    public float time;
+    private double powT;
+    /*----------------丟熊熊----------------------*/
+
     // Start is called before the first frame update
     void Start()
     {
-        rain.SetActive(false);
-        Renderer renderer = raindot.GetComponent<Renderer>();
-        material = renderer.material;
-        material.SetFloat("_Ripple_Strengh", 0);
+        treechoice = Random.Range(0, 6);
+        //rain.SetActive(false);
+        //Renderer renderer = raindot.GetComponent<Renderer>();
+        //material = renderer.material;
+        //material.SetFloat("_Ripple_Strengh", 0);
         /*-----------------搖樹----------------------*/
-        Renderer treerenderer = Wavetree.GetComponent<Renderer>();
+        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
         treematerial = treerenderer.material;
 
         /*-----------------搖樹----------------------*/
@@ -71,13 +88,24 @@ public class Arduinoreserve : MonoBehaviour
         {
             StartCoroutine(TriggerLightingEffect());
             triggerLighting = false;  // 重置旗標
-            // lightingcode.enabled = false;   
+            // lightingcode.enabled = false;
         }
 
         if (raincheck /*|| raindotcheck*/ == true)
         {
             rain.SetActive(true);
-            material.SetFloat("_Ripple_Strengh", 0.1f);
+            rainmaterial.SetFloat("_Ripple_Strengh", 0.1f);
+        }
+        
+        if (throwcheck /*|| raindotcheck*/ == true)
+        {
+            RockX = Rock.transform.position.x;
+            RockY = Rock.transform.position.y;
+            RockZ = Rock.transform.position.z;
+            time = Time.deltaTime;
+
+            powT = (float)throwrocktotalTime * throwrocktotalTime;
+            Rock.transform.localPosition = new Vector3((RockX * time) / throwrocktotalTime, (RockY * time) / throwrocktotalTime, ((RockZ + (float)(0.5 * gravty * powT))/throwrocktotalTime) * (time - (float)(0.5 * gravty * time*time)));
         }
 
         if(wavetreecheck == true)
@@ -98,30 +126,55 @@ public class Arduinoreserve : MonoBehaviour
             if (sp.IsOpen)
             {
                 confirm = sp.ReadLine();
-                sp4date = sp.ReadLine();
+                wavedate = sp.ReadLine();
 
-                int.TryParse(sp4date, out WaveVector);//把sp4date轉成int放到waveVrctor
+                int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
 
                 Debug.Log("confirm:" + confirm);
-                Debug.Log("Newdata:" + WaveVector);
-
-                // 檢查條件是否滿足，然後設定旗標
-                if (confirm == "T")
-                {
-                    triggerLighting = true;
-                }
-
-                if(confirm =="R")
-                {
-                    raincheck = true;
-                    //raindotcheck = true;
-                    
-                    //WaveTree.Newdate = Newdate;
-                }
-
+                //Debug.Log("Newdata:" + WaveVector);
                 if(WaveVector != 0)
                 {
                     wavetreecheck = true;
+                }
+
+                // 檢查條件是否滿足，然後設定旗標
+                if(treechoice == 1)
+                {
+                    if (confirm == "T")
+                    {
+                        triggerLighting = true;
+                        /*-----重選樹-----*/
+                        treechoice = Random.Range(0, 6);
+                        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+                        treematerial = treerenderer.material;
+                        /*-----重選樹-----*/
+                    }
+                }
+                else if (treechoice == 2)
+                {
+                    if(confirm =="T")
+                    {
+                        raincheck = true;
+                        raindotcheck = true;
+                        /*-----重選樹-----*/
+                        treechoice = Random.Range(0, 6);
+                        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+                        treematerial = treerenderer.material;
+                        /*-----重選樹-----*/
+                    }
+                }
+                
+                else if (treechoice == 3)
+                {
+                    if(confirm =="T")
+                    {
+                        throwcheck = true;
+                        /*-----重選樹-----*/
+                        treechoice = Random.Range(0, 6);
+                        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+                        treematerial = treerenderer.material;
+                        /*-----重選樹-----*/
+                    }
                 }
             }
             Thread.Sleep(10); // 控制讀取頻率，避免過度占用CPU
