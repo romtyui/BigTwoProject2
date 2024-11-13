@@ -11683,6 +11683,8 @@ MonoBehaviour:
   - {fileID: 1021770544}
   - {fileID: 1289658686}
   - {fileID: 4136996}
+  treematerial: {fileID: 2100000, guid: 240c82f9add30344aae3383904a06a04, type: 2}
+  leavesmaterial: {fileID: 2100000, guid: 42be68eff32326642a55df3141f07d12, type: 2}
   wavetreecheck: 0
   Rock: {fileID: 0}
   RockX: 0

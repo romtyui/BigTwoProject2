@@ -32,7 +32,8 @@ public class Arduinoreserve : MonoBehaviour
     public int treechoice;
     public bool treerechoice = false;
     public GameObject[] Wavetree;
-    private Material treematerial;
+    [SerializeField]private Material treematerial;
+    [SerializeField] private Material leavesmaterial;
     public bool wavetreecheck = false;
     /*-----------------·n¾ð----------------------*/
 
@@ -58,8 +59,8 @@ public class Arduinoreserve : MonoBehaviour
         rainmaterial = renderer.material;
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
         /*-----------------·n¾ð----------------------*/
-        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
-        treematerial = treerenderer.material;
+//        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+//        treematerial = treerenderer.material;
 
         /*-----------------·n¾ð----------------------*/
         
@@ -111,9 +112,9 @@ public class Arduinoreserve : MonoBehaviour
 
         if(wavetreecheck == true)
         {
-            treematerial.SetFloat("_WindDensity", 0.41f);
-            treematerial.SetFloat("_WindMovement", Vectory);
-            treematerial.SetFloat("_WindStrength", 2.6f);
+            leavesmaterial.SetFloat("_WindDensity", 0.41f);
+            leavesmaterial.SetFloat("_WindMovement", Vectory);
+            leavesmaterial.SetFloat("_WindStrength", 2.6f);
             Vector2 offset = treematerial.GetVector("_Direction");
             treematerial.SetVector("_Direction", new Vector4(Vectory, 0.1f, 0, 0));
             treematerial.SetFloat("_BlendStrength", 5f);
