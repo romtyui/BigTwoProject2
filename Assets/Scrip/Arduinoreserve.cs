@@ -7,10 +7,11 @@ using System.Runtime.CompilerServices;
 
 public class Arduinoreserve : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com5", 38400);
-    public SerialPort sp4 = new SerialPort("com4", 38400);
+    public SerialPort sp = new SerialPort("com7", 38400);
+    //public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
+    public float Vectory;
     public string wavedate;
     public string confirm;
 
@@ -29,10 +30,10 @@ public class Arduinoreserve : MonoBehaviour
     /*-----------------搖樹----------------------*/
     [Header("搖樹")]
     public int treechoice;
+    public bool treerechoice = false;
     public GameObject[] Wavetree;
-    public bool Wavetreecheck;
     private Material treematerial;
-    public bool wavetreecheck;
+    public bool wavetreecheck = false;
     /*-----------------搖樹----------------------*/
 
     /*----------------丟熊熊----------------------*/
@@ -51,11 +52,11 @@ public class Arduinoreserve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        treechoice = Random.Range(0, 6);
-        //rain.SetActive(false);
-        //Renderer renderer = raindot.GetComponent<Renderer>();
-        //material = renderer.material;
-        //material.SetFloat("_Ripple_Strengh", 0);
+        treechoice = Random.Range(0, 3);
+        rain.SetActive(false);
+        Renderer renderer = raindot.GetComponent<Renderer>();
+        rainmaterial = renderer.material;
+        rainmaterial.SetFloat("_Ripple_Strengh", 0);
         /*-----------------搖樹----------------------*/
         Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
         treematerial = treerenderer.material;
@@ -65,7 +66,7 @@ public class Arduinoreserve : MonoBehaviour
         try
         {
             sp.Open();
-            sp4.Open();
+            //sp4.Open();
             serialThread = new Thread(ReadSerialData);
             serialThread.Start();
         }
@@ -111,11 +112,19 @@ public class Arduinoreserve : MonoBehaviour
         if(wavetreecheck == true)
         {
             treematerial.SetFloat("_WindDensity", 0.41f);
-            treematerial.SetFloat("_WindMovement", 3.4f);
+            treematerial.SetFloat("_WindMovement", Vectory);
             treematerial.SetFloat("_WindStrength", 2.6f);
             Vector2 offset = treematerial.GetVector("_Direction");
-            treematerial.SetVector("_Direction", new Vector4(WaveVector, 0.1f, 0, 0));
+            treematerial.SetVector("_Direction", new Vector4(Vectory, 0.1f, 0, 0));
             treematerial.SetFloat("_BlendStrength", 5f);
+        }
+
+        if(treerechoice == true)
+        {
+            treechoice = Random.Range(0, 3);
+            Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+            treematerial = treerenderer.material;
+            treerechoice = false;
         }
     }
 
@@ -127,52 +136,49 @@ public class Arduinoreserve : MonoBehaviour
             {
                 confirm = sp.ReadLine();
                 wavedate = sp.ReadLine();
-
-                int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
-
-                Debug.Log("confirm:" + confirm);
+                if(wavedate != "T")
+                {
+                    Vectory = float.Parse(wavedate);
+                }
+                //int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
+                //int.TryParse(confirm, out WaveVector);
+                Debug.Log("Vectory:" + Vectory);
                 //Debug.Log("Newdata:" + WaveVector);
-                if(WaveVector != 0)
+                if(Vectory > 0 || Vectory < 0)
                 {
                     wavetreecheck = true;
                 }
 
                 // 檢查條件是否滿足，然後設定旗標
-                if(treechoice == 1)
+                if(treechoice == 0)
                 {
                     if (confirm == "T")
                     {
                         triggerLighting = true;
                         /*-----重選樹-----*/
-                        treechoice = Random.Range(0, 6);
-                        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
-                        treematerial = treerenderer.material;
+                        treerechoice = true;
                         /*-----重選樹-----*/
                     }
                 }
-                else if (treechoice == 2)
+                else if (treechoice == 1)
                 {
                     if(confirm =="T")
                     {
                         raincheck = true;
                         raindotcheck = true;
                         /*-----重選樹-----*/
-                        treechoice = Random.Range(0, 6);
-                        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
-                        treematerial = treerenderer.material;
+                        treerechoice = true;
                         /*-----重選樹-----*/
                     }
                 }
                 
-                else if (treechoice == 3)
+                else if (treechoice == 2)
                 {
                     if(confirm =="T")
                     {
                         throwcheck = true;
                         /*-----重選樹-----*/
-                        treechoice = Random.Range(0, 6);
-                        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
-                        treematerial = treerenderer.material;
+                        treerechoice = true;
                         /*-----重選樹-----*/
                     }
                 }
