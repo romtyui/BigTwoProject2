@@ -41,15 +41,19 @@ public class Arduinoreserve : MonoBehaviour
 
     /*----------------¥áºµºµ----------------------*/
     [Header("¥áºµºµ")]
-    public GameObject Rock;
-    public float RockX;
-    public float RockY;
-    public float RockZ;
-    public bool throwcheck = false;
-    public float throwrocktotalTime = 3;
-    public float gravty = 9.8f;
-    public float time;
-    private double powT;
+    //public GameObject Rock;
+    //public float RockX;
+    //public float RockY;
+    //public float RockZ;
+    //public bool throwcheck = false;
+    //public float throwrocktotalTime = 3;
+    //public float gravty = 9.8f;
+    //public float time;
+    //private double powT;
+    public GameObject bear;
+    public GameObject fruit;
+    public bool dropcheck = false;
+    public float triggerTime=0;
     /*----------------¥áºµºµ----------------------*/
 
     // Start is called before the first frame update
@@ -101,15 +105,22 @@ public class Arduinoreserve : MonoBehaviour
             rainmaterial.SetFloat("_Ripple_Strengh", 0.1f);
         }
         
-        if (throwcheck /*|| raindotcheck*/ == true)
+        if (dropcheck == true)
         {
-            RockX = Rock.transform.position.x;
-            RockY = Rock.transform.position.y;
-            RockZ = Rock.transform.position.z;
-            time = Time.deltaTime;
+            //RockX = Rock.transform.position.x;
+            //RockY = Rock.transform.position.y;
+            //RockZ = Rock.transform.position.z;
+            //time = Time.deltaTime;
+            //powT = (float)throwrocktotalTime * throwrocktotalTime;
+            //Rock.transform.localPosition = new Vector3((RockX * time) / throwrocktotalTime, (RockY * time) / throwrocktotalTime, ((RockZ + (float)(0.5 * gravty * powT))/throwrocktotalTime) * (time - (float)(0.5 * gravty * time*time)));
+            fruit.SetActive(true);
+            //triggerTime = Time.deltaTime;
+            //if(T>2)
+            //{
+                bear.SetActive(true);
 
-            powT = (float)throwrocktotalTime * throwrocktotalTime;
-            Rock.transform.localPosition = new Vector3((RockX * time) / throwrocktotalTime, (RockY * time) / throwrocktotalTime, ((RockZ + (float)(0.5 * gravty * powT))/throwrocktotalTime) * (time - (float)(0.5 * gravty * time*time)));
+            //}
+            dropcheck = false;
         }
         if(Zerowavetreecheck == true)
         {
@@ -206,7 +217,7 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if(confirm =="T")
                     {
-                        throwcheck = true;
+                        dropcheck = true;
                         /*-----­«¿ï¾ð-----*/
                         treerechoice = true;
                         /*-----­«¿ï¾ð-----*/
