@@ -30,11 +30,13 @@ public class Arduinoreserve : MonoBehaviour
     /*-----------------搖樹----------------------*/
     [Header("搖樹")]
     public int treechoice;
+    private float FVectory;
     public bool treerechoice = false;
     public GameObject[] Wavetree;
     [SerializeField]private Material treematerial;
     [SerializeField] private Material leavesmaterial;
     public bool wavetreecheck = false;
+    public bool Zerowavetreecheck = false;
     /*-----------------搖樹----------------------*/
 
     /*----------------丟熊熊----------------------*/
@@ -109,16 +111,28 @@ public class Arduinoreserve : MonoBehaviour
             powT = (float)throwrocktotalTime * throwrocktotalTime;
             Rock.transform.localPosition = new Vector3((RockX * time) / throwrocktotalTime, (RockY * time) / throwrocktotalTime, ((RockZ + (float)(0.5 * gravty * powT))/throwrocktotalTime) * (time - (float)(0.5 * gravty * time*time)));
         }
-
-        if(wavetreecheck == true)
+        if(Zerowavetreecheck == true)
         {
-            leavesmaterial.SetFloat("_WindDensity", Vectory * 5);
-            leavesmaterial.SetFloat("_WindMovement", Vectory*5);
-            leavesmaterial.SetFloat("_WindStrength", Vectory * 5);
+            leavesmaterial.SetFloat("_WindDensity", FVectory);
+            leavesmaterial.SetFloat("_WindMovement", FVectory);
+            leavesmaterial.SetFloat("_WindStrength", FVectory);
             Vector2 offset = treematerial.GetVector("_Direction");
-            treematerial.SetVector("_Direction", new Vector4(Vectory*5, 0.1f, 0, 0));
+            treematerial.SetVector("_Direction", new Vector4(FVectory, 0.1f, 0, 0));
             treematerial.SetFloat("_BlendStrength", 5f);
+            Zerowavetreecheck = false;
         }
+
+        else if(wavetreecheck == true)
+        {
+            leavesmaterial.SetFloat("_WindDensity", WaveVector);
+            leavesmaterial.SetFloat("_WindMovement", WaveVector);
+            leavesmaterial.SetFloat("_WindStrength", WaveVector);
+            Vector2 offset = treematerial.GetVector("_Direction");
+            treematerial.SetVector("_Direction", new Vector4(WaveVector, 0.1f, 0, 0));
+            treematerial.SetFloat("_BlendStrength", 5f);
+            wavetreecheck = false;
+        }
+        
 
         if(treerechoice == true)
         {
@@ -140,14 +154,29 @@ public class Arduinoreserve : MonoBehaviour
                 if(wavedate != "T")
                 {
                     Vectory = float.Parse(wavedate);
+                    WaveVector = (int)Vectory;
                 }
                 //int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
                 //int.TryParse(confirm, out WaveVector);
                 Debug.Log("Vectory:" + Vectory);
+                Debug.Log("WaveVectory:" + WaveVector);
                 //Debug.Log("Newdata:" + WaveVector);
-                if(Vectory > 0 || Vectory < 0)
+                if (WaveVector == 0)
+                {
+                    Zerowavetreecheck = true;
+                    FVectory = 0.5f;
+                }
+                
+                if(WaveVector == 2 || WaveVector == -2)
                 {
                     wavetreecheck = true;
+                    WaveVector = 2;
+                }
+                
+                if(WaveVector == 1 || WaveVector == -1)
+                {
+                    wavetreecheck = true;
+                    WaveVector = 1;
                 }
 
                 // 檢查條件是否滿足，然後設定旗標
