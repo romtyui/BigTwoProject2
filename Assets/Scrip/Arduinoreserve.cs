@@ -112,11 +112,11 @@ public class Arduinoreserve : MonoBehaviour
 
         if(wavetreecheck == true)
         {
-            leavesmaterial.SetFloat("_WindDensity", 0.41f);
-            leavesmaterial.SetFloat("_WindMovement", Vectory);
-            leavesmaterial.SetFloat("_WindStrength", 2.6f);
+            leavesmaterial.SetFloat("_WindDensity", Vectory * 5);
+            leavesmaterial.SetFloat("_WindMovement", Vectory*5);
+            leavesmaterial.SetFloat("_WindStrength", Vectory * 5);
             Vector2 offset = treematerial.GetVector("_Direction");
-            treematerial.SetVector("_Direction", new Vector4(Vectory, 0.1f, 0, 0));
+            treematerial.SetVector("_Direction", new Vector4(Vectory*5, 0.1f, 0, 0));
             treematerial.SetFloat("_BlendStrength", 5f);
         }
 
