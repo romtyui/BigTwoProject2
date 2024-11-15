@@ -10,7 +10,7 @@ using System.Threading;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com5", 38400);
+    public SerialPort sp = new SerialPort("com4", 38400);
     private Thread serialThread;
     //public float[] num;
     private float Pos;
