@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2606435518134363971
+--- !u!114 &-6931105343726130491
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LeafWavingMaterial
+  m_Name: Tree 2
   m_Shader: {fileID: -6465566751694194690, guid: 2f3845e561daf44428718c04532083f6, type: 3}
-  m_Parent: {fileID: 2100000, guid: cec126263fe1b8b4ab4da35ff07747fc, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -37,14 +37,28 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Tree:
-        m_Texture: {fileID: 2800000, guid: e8b74432cb14c9e4b9f8b84ddbaf1a4a, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _RootY: 1.78
-    - _WindDensity: 0.5
-    - _WindMovement: 0.5
-    - _WindStrength: 0.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RootY: 1
+    - _WindDensity: 0.87
+    - _WindMovement: 0.26
+    - _WindStrength: 2.48
     m_Colors: []
   m_BuildTextureStacks: []

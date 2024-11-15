@@ -215,11 +215,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4136998}
   m_SourcePrefab: {fileID: 100100000, guid: ab1ce5277e070ec4989d7357c6a8a44d, type: 3}
---- !u!1 &4136996 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ab1ce5277e070ec4989d7357c6a8a44d, type: 3}
-  m_PrefabInstance: {fileID: 4136995}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4136997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8232536009477512037, guid: ab1ce5277e070ec4989d7357c6a8a44d, type: 3}
@@ -5578,6 +5573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7421033346236238759, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+      propertyPath: m_Name
+      value: Trunk3
+      objectReference: {fileID: 0}
     - target: {fileID: 814744711922195842, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5588,7 +5587,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 42be68eff32326642a55df3141f07d12, type: 2}
     - target: {fileID: 919132149155446097, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Name
-      value: CombineTree (5)
+      value: CombineTree 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -11573,9 +11572,12 @@ MonoBehaviour:
   Wavetree:
   - {fileID: 1021770544}
   - {fileID: 1289658686}
-  - {fileID: 4136996}
-  treematerial: {fileID: 2100000, guid: 240c82f9add30344aae3383904a06a04, type: 2}
-  leavesmaterial: {fileID: 2100000, guid: 42be68eff32326642a55df3141f07d12, type: 2}
+  - {fileID: 976184760}
+  treematerial:
+  - {fileID: 0}
+  - {fileID: 0}
+  leavesmaterial: {fileID: 0}
+  trunkmaterial: {fileID: 0}
   wavetreecheck: 0
   Zerowavetreecheck: 0
   bear: {fileID: 1640954475}
@@ -16410,6 +16412,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &976184760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7421033346236238759, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+  m_PrefabInstance: {fileID: 1617839034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1001425118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5931372751300003811, guid: 09b0eb78fc2fd9640941b4377531c812, type: 3}
@@ -16819,6 +16826,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7421033346236238759, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+      propertyPath: m_Name
+      value: Trunk1
+      objectReference: {fileID: 0}
     - target: {fileID: 814744711922195842, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16829,7 +16840,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 42be68eff32326642a55df3141f07d12, type: 2}
     - target: {fileID: 919132149155446097, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Name
-      value: CombineTree
+      value: CombineTree 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -17063,6 +17074,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7421033346236238759, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+      propertyPath: m_Name
+      value: Trunk2
+      objectReference: {fileID: 0}
     - target: {fileID: 814744711922195842, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -17073,7 +17088,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 42be68eff32326642a55df3141f07d12, type: 2}
     - target: {fileID: 919132149155446097, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Name
-      value: CombineTree (1)
+      value: CombineTree 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

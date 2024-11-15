@@ -33,8 +33,9 @@ public class Arduinoreserve : MonoBehaviour
     private float FVectory;
     public bool treerechoice = false;
     public GameObject[] Wavetree;
-    [SerializeField]private Material treematerial;
-    [SerializeField] private Material leavesmaterial;
+    public Material[] treematerial;
+    public Material leavesmaterial;
+    public Material trunkmaterial;
     public bool wavetreecheck = false;
     public bool Zerowavetreecheck = false;
     /*-----------------·n¾ð----------------------*/
@@ -59,15 +60,16 @@ public class Arduinoreserve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        treechoice = Random.Range(0, 3);
         rain.SetActive(false);
         Renderer renderer = raindot.GetComponent<Renderer>();
         rainmaterial = renderer.material;
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
         /*-----------------·n¾ð----------------------*/
-//        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
-//        treematerial = treerenderer.material;
-
+        treechoice = Random.Range(0, 3);
+        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+        treematerial = treerenderer.materials;
+        trunkmaterial = treematerial[0];
+        leavesmaterial = treematerial[1];
         /*-----------------·n¾ð----------------------*/
         
         try
@@ -127,9 +129,9 @@ public class Arduinoreserve : MonoBehaviour
             leavesmaterial.SetFloat("_WindDensity", FVectory);
             leavesmaterial.SetFloat("_WindMovement", FVectory);
             leavesmaterial.SetFloat("_WindStrength", FVectory);
-            Vector2 offset = treematerial.GetVector("_Direction");
-            treematerial.SetVector("_Direction", new Vector4(FVectory, 0.1f, 0, 0));
-            treematerial.SetFloat("_BlendStrength", 5f);
+            Vector2 offset = trunkmaterial.GetVector("_Direction");
+            trunkmaterial.SetVector("_Direction", new Vector4(FVectory, 0.1f, 0, 0));
+            trunkmaterial.SetFloat("_BlendStrength", 5f);
             Zerowavetreecheck = false;
         }
 
@@ -138,9 +140,9 @@ public class Arduinoreserve : MonoBehaviour
             leavesmaterial.SetFloat("_WindDensity", WaveVector);
             leavesmaterial.SetFloat("_WindMovement", WaveVector);
             leavesmaterial.SetFloat("_WindStrength", WaveVector);
-            Vector2 offset = treematerial.GetVector("_Direction");
-            treematerial.SetVector("_Direction", new Vector4(WaveVector, 0.1f, 0, 0));
-            treematerial.SetFloat("_BlendStrength", 5f);
+            Vector2 offset = trunkmaterial.GetVector("_Direction");
+            trunkmaterial.SetVector("_Direction", new Vector4(WaveVector, 0.1f, 0, 0));
+            trunkmaterial.SetFloat("_BlendStrength", 5f);
             wavetreecheck = false;
         }
         
@@ -149,7 +151,10 @@ public class Arduinoreserve : MonoBehaviour
         {
             treechoice = Random.Range(0, 3);
             Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
-            treematerial = treerenderer.material;
+            treematerial = treerenderer.materials;
+
+            trunkmaterial = treematerial[0];
+            leavesmaterial = treematerial[1];
             treerechoice = false;
         }
     }
