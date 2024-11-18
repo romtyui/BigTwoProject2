@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 public class Arduinoreserve : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com7", 38400);
+    public SerialPort sp = new SerialPort("com4", 38400);//com7
     //public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
