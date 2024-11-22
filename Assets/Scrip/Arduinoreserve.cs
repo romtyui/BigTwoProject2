@@ -228,6 +228,34 @@ public class Arduinoreserve : MonoBehaviour
                         /*-----重選樹-----*/
                     }
                 }
+
+                if (wavedate == "103" || confirm == "103")
+                {
+                    
+                    dropcheck = true;
+                    /*-----重選樹-----*/
+                    treerechoice = true;
+                    /*-----重選樹-----*/
+                }
+
+                if (wavedate == "102" || confirm == "102")
+                {
+
+                    raincheck = true;
+                    raindotcheck = true;
+                    /*-----重選樹-----*/
+                    treerechoice = true;
+                    /*-----重選樹-----*/
+                }
+
+                if (wavedate == "101" || confirm == "101")
+                {
+
+                    triggerLighting = true;
+                    /*-----重選樹-----*/
+                    treerechoice = true;
+                    /*-----重選樹-----*/
+                }
             }
             Thread.Sleep(10); // 控制讀取頻率，避免過度占用CPU
         }
