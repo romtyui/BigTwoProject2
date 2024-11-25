@@ -1,29 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using System.IO.Ports;
-using System;
-using Palmmedia.ReportGenerator.Core.Common;
-using UnityEngine.UIElements;
-using Unity.VisualScripting;
-using System.Threading;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com3", 38400);//com4
+    public SerialPort sp = new SerialPort("com3", 38400);
     private Thread serialThread;
-    //public float[] num;
     private float Pos;
-    public float time;
-    private string Newdate;
     private int Olddate;
-    public int WaveVector;
-    private string Tconfirm;
     private int transpos;
-    public bool triggerCamera;
-    public bool rollcamera;
-    //public string[] WORD ,newdata;//1.角度2.x軸3.Y軸4.Z軸
-    // Start is called before the first frame update
+    private bool triggerCamera;
+    private bool isRotating = false; // 是否正在旋轉
 
     void Start()
     {
@@ -39,128 +27,84 @@ public class Arduino : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        // 在主執行緒中檢查旗標，並根據需要啟動 lightingcode
-        if (triggerCamera)
+        if (triggerCamera && !isRotating) // 如果觸發旋轉且未在旋轉中
         {
             StartCoroutine(roundCamera());
-            triggerCamera = false;  // 重置旗標
-                                      // lightingcode.enabled = false;
+            triggerCamera = false; // 重置觸發標誌
         }
     }
+
     private void ReadSerialData()
     {
         while (true)
         {
             if (sp.IsOpen)
             {
-                Newdate = sp.ReadLine();
-
-                //Pos = float.Parse(Newdate);
-                float.TryParse(Newdate, out Pos);
-                transpos = (int)Pos;
-
-               // int.TryParse(Newdate, out WaveVector);
-
-                // 檢查條件是否滿足，然後設定旗標
-                Debug.Log(transpos);
-
-                if(Newdate != null)
+                try
                 {
-                    triggerCamera = true;
+                    string rawData = sp.ReadLine();
+                    if (float.TryParse(rawData, out float newAngle))
+                    {
+                        Pos = newAngle;
+                        transpos = Mathf.RoundToInt(Pos);
+                        triggerCamera = true; // 設置觸發標誌
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError("Serial Read Error: " + ex.Message);
                 }
             }
-            Thread.Sleep(10); // 控制讀取頻率，避免過度占用CPU
+            Thread.Sleep(10);
         }
     }
 
     private IEnumerator roundCamera()
     {
-        if (transpos != null)
+        if (transpos != Olddate && !isRotating) // 如果角度變化且未在旋轉中
         {
-            if (transpos != Olddate)
-            {
-                int separate;
-                separate = transpos / 90;
-                Math.Abs(separate);
-                int Quadrant;
-                Quadrant = separate % 4;
-                if (Quadrant == 0)
-                {
-                    rollcamera = true;
-                    if(rollcamera == true)
-                    {
-                        float gap = Time.deltaTime;
-                        if (gap >= 45)
-                        {
-                            gap = 45;
-                        }
-                        this.transform.Rotate(0, gap, 0, Space.Self);
-                        rollcamera = false;
-                    }
-                }
-                
-                else if (Quadrant ==1)
-                {
-                    rollcamera = true;
-                    if (rollcamera == true)
-                    {
-                        float gap = 45+Time.deltaTime;
-                        if (gap >= 135)
-                        {
-                            gap = 135;
-                        }
-                        this.transform.Rotate(0, gap, 0, Space.Self);
-                        rollcamera = false;
-                    }
+            // 計算目標角度
+            int newQuadrant = Mathf.FloorToInt((transpos + 180f) / 90f) % 4;
+            int targetAngle = newQuadrant * 90;
 
-                }
+            // 開始平滑旋轉
+            yield return SmoothRotateToAngle(targetAngle);
 
-                else if (Quadrant ==2)
-                {
-                    rollcamera = true;
-                    if (rollcamera == true)
-                    {
-                        float gap = 135+Time.deltaTime;
-                        if (gap >= 225)
-                        {
-                            gap = 225;
-                        }
-                        this.transform.Rotate(0, gap, 0, Space.Self);
-                        rollcamera = false;
-                    }
-                }
-
-                else if (Quadrant == 3)
-                {
-                    rollcamera = true;
-                    if (rollcamera == true)
-                    {
-                        float gap = 225+Time.deltaTime;
-                        if (gap >= 315)
-                        {
-                            gap = 315;
-                        }
-                        this.transform.Rotate(0, gap, 0, Space.Self);
-                        rollcamera = false;
-                    }
-
-                }
-                    //////////////////////////////////int gap = transpos - Olddate;
-                    //this.transform.position = new Vector3(Pos, 0, 0);
-                    // this.transform.Rotate(Vector3.right * this.transform.rotation.x * Pos);
-                    //                    this.transform.rotation = this.transform.rotation +  Quaternion.Angle;
-                    //if (time % 1.0f ==0)
-                    //{
-                    //////////////////////////////////this.transform.Rotate(0, -gap / 3.5f, 0, Space.Self);
-                    //}
-            }
-            Olddate = transpos;
+            Olddate = transpos; // 更新上一個角度
         }
-        yield return new WaitForSeconds(0.5f);  // 例如延遲0.1秒
+    }
+
+    private IEnumerator SmoothRotateToAngle(float targetAngle)
+    {
+        isRotating = true; // 開始旋轉
+        float duration = 1.0f; // 平滑旋轉所需時間（秒）
+        float elapsedTime = 0f; // 已經過的時間
+        Quaternion startRotation = transform.rotation; // 初始旋轉角度
+        Quaternion endRotation = Quaternion.Euler(0, targetAngle, 0); // 目標旋轉角度
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime; // 更新已經過的時間
+            float t = elapsedTime / duration; // 時間比例
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, t); // 平滑旋轉
+            yield return null; // 等待下一幀
+        }
+
+        transform.rotation = endRotation; // 確保最終旋轉到目標角度
+        isRotating = false; // 結束旋轉
+    }
+
+    private void OnDestroy()
+    {
+        if (serialThread != null && serialThread.IsAlive)
+        {
+            serialThread.Abort();
+        }
+        if (sp.IsOpen)
+        {
+            sp.Close();
+        }
     }
 }
-    
-
