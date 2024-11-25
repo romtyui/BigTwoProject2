@@ -8,7 +8,7 @@ namespace nminhhoangit.SunCalculator
     {
         // Public Params
         public Transform pillar;
-        [Range(3f, 100f)]
+        [Range(3f, 200f)]
         public float offsetDistance = 10f;
 
         // Private Params
@@ -32,7 +32,7 @@ namespace nminhhoangit.SunCalculator
         //
         [SerializeField]
         [Range(0, 23)]
-        private int m_Hour = 0;
+        public int m_Hour = 0;
         //
         [SerializeField]
         [Range(0, 59)]
