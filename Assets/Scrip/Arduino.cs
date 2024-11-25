@@ -21,6 +21,7 @@ public class Arduino : MonoBehaviour
     private string Tconfirm;
     private int transpos;
     public bool triggerCamera;
+    public bool rollcamera;
     //public string[] WORD ,newdata;//1.¨¤«×2.x¶b3.Y¶b4.Z¶b
     // Start is called before the first frame update
 
@@ -81,17 +82,80 @@ public class Arduino : MonoBehaviour
         {
             if (transpos != Olddate)
             {
-                if (transpos > 0 || transpos < 0)
+                int separate;
+                separate = transpos / 90;
+                Math.Abs(separate);
+                int Quadrant;
+                Quadrant = separate % 4;
+                if (Quadrant == 0)
                 {
-                    int gap = transpos - Olddate;
+                    rollcamera = true;
+                    if(rollcamera == true)
+                    {
+                        float gap = Time.deltaTime;
+                        if (gap >= 45)
+                        {
+                            gap = 45;
+                        }
+                        this.transform.Rotate(0, gap, 0, Space.Self);
+                        rollcamera = false;
+                    }
+                }
+                
+                else if (Quadrant ==1)
+                {
+                    rollcamera = true;
+                    if (rollcamera == true)
+                    {
+                        float gap = 45+Time.deltaTime;
+                        if (gap >= 135)
+                        {
+                            gap = 135;
+                        }
+                        this.transform.Rotate(0, gap, 0, Space.Self);
+                        rollcamera = false;
+                    }
+
+                }
+
+                else if (Quadrant ==2)
+                {
+                    rollcamera = true;
+                    if (rollcamera == true)
+                    {
+                        float gap = 135+Time.deltaTime;
+                        if (gap >= 225)
+                        {
+                            gap = 225;
+                        }
+                        this.transform.Rotate(0, gap, 0, Space.Self);
+                        rollcamera = false;
+                    }
+                }
+
+                else if (Quadrant == 3)
+                {
+                    rollcamera = true;
+                    if (rollcamera == true)
+                    {
+                        float gap = 225+Time.deltaTime;
+                        if (gap >= 315)
+                        {
+                            gap = 315;
+                        }
+                        this.transform.Rotate(0, gap, 0, Space.Self);
+                        rollcamera = false;
+                    }
+
+                }
+                    //////////////////////////////////int gap = transpos - Olddate;
                     //this.transform.position = new Vector3(Pos, 0, 0);
                     // this.transform.Rotate(Vector3.right * this.transform.rotation.x * Pos);
                     //                    this.transform.rotation = this.transform.rotation +  Quaternion.Angle;
                     //if (time % 1.0f ==0)
                     //{
-                    this.transform.Rotate(0, -gap / 3.5f, 0, Space.Self);
+                    //////////////////////////////////this.transform.Rotate(0, -gap / 3.5f, 0, Space.Self);
                     //}
-                }
             }
             Olddate = transpos;
         }
