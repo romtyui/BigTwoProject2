@@ -4,9 +4,12 @@ using UnityEngine;
 using System.IO.Ports;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 public class Arduinoreserve : MonoBehaviour
 {
+    public Camera mainCamera; // 指定攝像機
+
     public SerialPort sp = new SerialPort("com7", 38400);//com7
     //public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
@@ -31,8 +34,9 @@ public class Arduinoreserve : MonoBehaviour
     [Header("搖樹")]
     public int treechoice;
     private float FVectory;
-    public bool treerechoice = false;
+    public static bool treerechoice = false;
     public GameObject[] Wavetree;
+    public GameObject[] incameratree;
     public Material[] treematerial;
     public Material leavesmaterial;
     public Material trunkmaterial;
@@ -65,8 +69,21 @@ public class Arduinoreserve : MonoBehaviour
         rainmaterial = renderer.material;
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
         /*-----------------搖樹----------------------*/
+        foreach (GameObject obj in Wavetree)
+        {
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
+
+            // 檢查物件是否在視野內
+            if (viewportPos.z > 0 && // 確保物件在攝像機前方
+                viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
+                viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
+            {
+                incameratree.Append(obj);
+                Debug.Log($"{obj.name} is in view.");
+            }
+        }
         treechoice = Random.Range(0, 3);
-        Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+        Renderer treerenderer = incameratree[treechoice].GetComponent<Renderer>();
         treematerial = treerenderer.materials;
         trunkmaterial = treematerial[0];
         leavesmaterial = treematerial[1];
@@ -149,8 +166,22 @@ public class Arduinoreserve : MonoBehaviour
 
         if(treerechoice == true)
         {
+            foreach (GameObject obj in Wavetree)
+            {
+                Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
+
+                // 檢查物件是否在視野內
+                if (viewportPos.z > 0 && // 確保物件在攝像機前方
+                    viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
+                    viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
+                {
+                    incameratree.Append(obj);
+                    Debug.Log($"{obj.name} is in view.");
+                }
+            }
+
             treechoice = Random.Range(0, 3);
-            Renderer treerenderer = Wavetree[treechoice].GetComponent<Renderer>();
+            Renderer treerenderer = incameratree[treechoice].GetComponent<Renderer>();
             treematerial = treerenderer.materials;
 
             trunkmaterial = treematerial[0];

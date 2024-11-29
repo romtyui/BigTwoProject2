@@ -68,10 +68,24 @@ public class Arduino : MonoBehaviour
             // 計算目標角度
             int newQuadrant = Mathf.FloorToInt((transpos + 180f) / 90f) % 4;
             int targetAngle = newQuadrant * 90;
-
+            switch(newQuadrant)
+            {
+                case 0:
+                    Debug.Log("第一象限");
+                    break;
+                case 1:
+                    Debug.Log("第二象限");
+                    break;
+                case 2:
+                    Debug.Log("第三象限");
+                    break;
+                case 3:
+                    Debug.Log("第一象限");
+                    break;
+            }
+            Arduinoreserve.treerechoice = true;
             // 開始平滑旋轉
             yield return SmoothRotateToAngle(targetAngle);
-
             Olddate = transpos; // 更新上一個角度
         }
     }
