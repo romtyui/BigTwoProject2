@@ -635,9 +635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64caed698416242bbde067c6a728a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
-  WaveVector: 0
-  triggerCamera: 0
 --- !u!4 &204917619
 Transform:
   m_ObjectHideFlags: 0
@@ -1494,7 +1491,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 5
+    type: 15
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -1502,7 +1499,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Scale: {x: 0.31, y: 1, z: 0.72}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -5597,8 +5594,8 @@ Transform:
   m_GameObject: {fileID: 280154491}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -16.3, y: 50.28, z: 15.7}
-  m_LocalScale: {x: 4.475734, y: 4.475734, z: 6.851007}
+  m_LocalPosition: {x: -16.3, y: 112.9, z: 15.7}
+  m_LocalScale: {x: 3.9856107, y: 3.9856107, z: 14.651621}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5632,9 +5629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64caed698416242bbde067c6a728a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
-  WaveVector: 0
-  triggerCamera: 0
 --- !u!114 &333073781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11946,9 +11940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64caed698416242bbde067c6a728a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
-  WaveVector: 0
-  triggerCamera: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12005,6 +11996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10565cdbc17bec745afd240f16af5598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   WaveVector: 0
   Vectory: 0
   wavedate: 
@@ -12016,11 +12008,11 @@ MonoBehaviour:
   raindotcheck: 0
   triggerLighting: 0
   treechoice: 0
-  treerechoice: 0
   Wavetree:
   - {fileID: 1021770544}
   - {fileID: 1289658686}
   - {fileID: 976184760}
+  incameratree: []
   treematerial:
   - {fileID: 0}
   - {fileID: 0}
