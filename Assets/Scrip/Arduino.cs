@@ -5,7 +5,7 @@ using System.IO.Ports;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com7", 38400);
+    public SerialPort sp = new SerialPort("com3", 38400);
     private Thread serialThread;
     private float Pos;
     private int Olddate;
