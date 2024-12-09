@@ -55,7 +55,8 @@ public class Arduinoreserve : MonoBehaviour
     //public float gravty = 9.8f;
     //public float time;
     //private double powT;
-    public GameObject bear;
+    public GameObject bearscare;
+    public static bool bearwalkdone;
     public GameObject fruit;
     public bool dropcheck = false;
     public float triggerTime=0;
@@ -136,7 +137,11 @@ public class Arduinoreserve : MonoBehaviour
             //triggerTime = Time.deltaTime;
             //if(T>2)
             //{
-                bear.SetActive(true);
+            if (bearwalkdone == true)
+            {
+                bearscare.SetActive(true);
+                Debug.Log("±Ò°Ê");
+            }
 
             //}
             dropcheck = false;
