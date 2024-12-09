@@ -137,6 +137,9 @@ public class Arduinoreserve : MonoBehaviour
             //triggerTime = Time.deltaTime;
             //if(T>2)
             //{
+
+            BearWalkCheck.bearStartWalk = true;
+
             if (bearwalkdone == true)
             {
                 bearscare.SetActive(true);
