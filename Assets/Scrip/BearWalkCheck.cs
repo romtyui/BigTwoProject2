@@ -36,7 +36,7 @@ public class BearWalkCheck : MonoBehaviour
         {
             Walkbear.SetActive (true);
             Vector3 targetpos = new Vector3(transform.position.x, transform.position.y, -15f);
-            this.transform.position = Vector3.Lerp(transform.position, targetpos, Time.deltaTime *1);
+            this.transform.position = Vector3.Lerp(transform.position, targetpos, Time.deltaTime *0.4f);
         }
     }
 }
