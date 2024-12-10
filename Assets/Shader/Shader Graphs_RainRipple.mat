@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 6a9d45ea8a30bc745b05cd1d74c4967e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9ac8a3482bf5ffe4e99230bf37fc256d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
@@ -72,5 +72,5 @@ Material:
     - _Speed: 0
     - _Tiling: 10.07
     m_Colors:
-    - _Tint: {r: 1, g: 1, b: 1, a: 0}
+    - _Tint: {r: 0.62144, g: 0.8962264, b: 0.62144, a: 0}
   m_BuildTextureStacks: []

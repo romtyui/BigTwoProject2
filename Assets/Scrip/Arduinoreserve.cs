@@ -10,7 +10,7 @@ public class Arduinoreserve : MonoBehaviour
 {
     public Camera mainCamera; // 指定攝像機
 
-    public SerialPort sp = new SerialPort("com7", 38400);//com7
+    public SerialPort sp = new SerialPort("com3", 38400);//com7
     //public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
@@ -55,7 +55,8 @@ public class Arduinoreserve : MonoBehaviour
     //public float gravty = 9.8f;
     //public float time;
     //private double powT;
-    public GameObject bear;
+    public GameObject bearscare;
+    public static bool bearwalkdone;
     public GameObject fruit;
     public bool dropcheck = false;
     public float triggerTime=0;
@@ -136,7 +137,14 @@ public class Arduinoreserve : MonoBehaviour
             //triggerTime = Time.deltaTime;
             //if(T>2)
             //{
-                bear.SetActive(true);
+
+            BearWalkCheck.bearStartWalk = true;
+
+            if (bearwalkdone == true)
+            {
+                bearscare.SetActive(true);
+                Debug.Log("啟動");
+            }
 
             //}
             dropcheck = false;
