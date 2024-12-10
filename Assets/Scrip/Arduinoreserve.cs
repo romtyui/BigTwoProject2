@@ -56,6 +56,7 @@ public class Arduinoreserve : MonoBehaviour
     //public float time;
     //private double powT;
     public GameObject bearscare;
+    public GameObject bearwalk;
     public static bool bearwalkdone;
     public GameObject fruit;
     public bool dropcheck = false;
@@ -133,21 +134,23 @@ public class Arduinoreserve : MonoBehaviour
             //time = Time.deltaTime;
             //powT = (float)throwrocktotalTime * throwrocktotalTime;
             //Rock.transform.localPosition = new Vector3((RockX * time) / throwrocktotalTime, (RockY * time) / throwrocktotalTime, ((RockZ + (float)(0.5 * gravty * powT))/throwrocktotalTime) * (time - (float)(0.5 * gravty * time*time)));
-            fruit.SetActive(true);
+    //        fruit.SetActive(true);
             //triggerTime = Time.deltaTime;
             //if(T>2)
             //{
 
+           
             BearWalkCheck.bearStartWalk = true;
-
+            Debug.Log("256482314586");
+            bearwalk.SetActive(true);
             if (bearwalkdone == true)
             {
                 bearscare.SetActive(true);
                 Debug.Log("±Ò°Ê");
+                dropcheck = false;
             }
 
             //}
-            dropcheck = false;
         }
         if(Zerowavetreecheck == true)
         {

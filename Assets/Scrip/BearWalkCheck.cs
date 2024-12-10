@@ -23,10 +23,6 @@ public class BearWalkCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bearStartWalk == true)
-        {
-            Walkbear.SetActive(true);
-        }
 
         if(Arduinoreserve.bearwalkdone == true)
         {
