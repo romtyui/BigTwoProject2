@@ -12040,7 +12040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &953616231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12354,10 +12354,10 @@ MonoBehaviour:
   Vectory: 0
   wavedate: 
   confirm: 
-  lightingcode: {fileID: 0}
+  lightingcode: {fileID: 953616231}
   rain: {fileID: 969987301}
   raincheck: 0
-  raindot: {fileID: 0}
+  raindot: {fileID: 1001425118}
   raindotcheck: 0
   triggerLighting: 0
   treechoice: 0
