@@ -17,7 +17,7 @@ public class Arduinoreserve : MonoBehaviour
     public float Vectory;
     public string wavedate;
     public string confirm;
-
+    public float Timer;
     /*-------------------------¤U«B-------------------------*/
     [Header("¤U«B")]
     public LightingCode lightingcode;
@@ -124,6 +124,14 @@ public class Arduinoreserve : MonoBehaviour
         {
             rain.SetActive(true);
             rainmaterial.SetFloat("_Ripple_Strengh", 0.1f);
+            Timer = Timer+Time.fixedDeltaTime;
+            if(Timer>=300f)
+            {
+                rain.SetActive(false);
+                rainmaterial.SetFloat("_Ripple_Strengh", 0f);
+                Timer = 0;
+                raincheck = false;
+            }
         }
         
         if (dropcheck == true)
