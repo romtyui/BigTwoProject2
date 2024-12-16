@@ -32,6 +32,7 @@ public class Arduinoreserve : MonoBehaviour
 
     /*-----------------搖樹----------------------*/
     [Header("搖樹")]
+    public JiggleChain jiggleChain;
     public int treechoice;
     private float FVectory;
     public static bool treerechoice = false;
@@ -71,6 +72,7 @@ public class Arduinoreserve : MonoBehaviour
         rainmaterial = renderer.material;
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
         /*-----------------搖樹----------------------*/
+        int i = 0;
         foreach (GameObject obj in Wavetree)
         {
             Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
@@ -80,15 +82,13 @@ public class Arduinoreserve : MonoBehaviour
                 viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
                 viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
             {
-                incameratree.Append(obj);
-                Debug.Log($"{obj.name} is in view.");
+                incameratree[i] = obj;
+                i++;
             }
         }
         treechoice = Random.Range(0, 3);
-        Renderer treerenderer = incameratree[treechoice].GetComponent<Renderer>();
-        treematerial = treerenderer.materials;
-        trunkmaterial = treematerial[0];
-        leavesmaterial = treematerial[1];
+        jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
+        jiggleChain.data.externalForce.y = 3;
         /*-----------------搖樹----------------------*/
         
         try
@@ -107,7 +107,7 @@ public class Arduinoreserve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
 
     void FixedUpdate()
@@ -149,7 +149,6 @@ public class Arduinoreserve : MonoBehaviour
 
            
             BearWalkCheck.bearStartWalk = true;
-            Debug.Log("256482314586");
             bearwalk.SetActive(true);
             if (bearwalkdone == true)
             {
@@ -188,23 +187,19 @@ public class Arduinoreserve : MonoBehaviour
             foreach (GameObject obj in Wavetree)
             {
                 Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
-
+                int i =0;
                 // 檢查物件是否在視野內
                 if (viewportPos.z > 0 && // 確保物件在攝像機前方
                     viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
                     viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
                 {
-                    incameratree.Append(obj);
-                    Debug.Log($"{obj.name} is in view.");
+                    incameratree[i] = obj;
+                    i++;
                 }
             }
 
             treechoice = Random.Range(0, 3);
-            Renderer treerenderer = incameratree[treechoice].GetComponent<Renderer>();
-            treematerial = treerenderer.materials;
-
-            trunkmaterial = treematerial[0];
-            leavesmaterial = treematerial[1];
+            jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
             treerechoice = false;
         }
     }
@@ -220,36 +215,38 @@ public class Arduinoreserve : MonoBehaviour
                 if(wavedate != "T")
                 {
                     Vectory = float.Parse(wavedate);
-                    WaveVector = (int)Vectory;
+                    //WaveVector = (int)Vectory;
                 }
                 //int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
                 //int.TryParse(confirm, out WaveVector);
                 Debug.Log("Vectory:" + Vectory);
                 Debug.Log("WaveVectory:" + WaveVector);
                 //Debug.Log("Newdata:" + WaveVector);
-                if (WaveVector == 0)
-                {
-                    Zerowavetreecheck = true;
-                    FVectory = 0.5f;
-                }
-                
-                if(WaveVector == 2 || WaveVector == -2)
-                {
-                    wavetreecheck = true;
-                    WaveVector = 2;
-                }
-                
-                if(WaveVector == 1 || WaveVector == -1)
-                {
-                    wavetreecheck = true;
-                    WaveVector = 1;
-                }
+                //    if (WaveVector == 0)
+                //    {
+                //        Zerowavetreecheck = true;
+                //        FVectory = 0.5f;
+                //    }
+
+                //    if(WaveVector == 2 || WaveVector == -2)
+                //    {
+                //        wavetreecheck = true;
+                //        WaveVector = 2;
+                //    }
+
+                //    if(WaveVector == 1 || WaveVector == -1)
+                //    {
+                //        wavetreecheck = true;
+                //        WaveVector = 1;
+                //    }
+                jiggleChain.data.externalForce.y = Vectory;
 
                 // 檢查條件是否滿足，然後設定旗標
-                if(treechoice == 0)
+                if (treechoice == 0)
                 {
                     if (confirm == "T")
                     {
+                        Debug.Log("256482314586");
                         triggerLighting = true;
                         /*-----重選樹-----*/
                         treerechoice = true;
@@ -260,6 +257,7 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if(confirm =="T")
                     {
+                        Debug.Log("256482314586");
                         raincheck = true;
                         raindotcheck = true;
                         /*-----重選樹-----*/
@@ -272,6 +270,7 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if(confirm =="T")
                     {
+                        Debug.Log("256482314586");
                         dropcheck = true;
                         /*-----重選樹-----*/
                         treerechoice = true;
@@ -281,7 +280,7 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "103" || confirm == "103")
                 {
-                    
+                    Debug.Log("256482314586");
                     dropcheck = true;
                     /*-----重選樹-----*/
                     treerechoice = true;
@@ -290,7 +289,7 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "102" || confirm == "102")
                 {
-
+                    Debug.Log("256482314586");
                     raincheck = true;
                     raindotcheck = true;
                     /*-----重選樹-----*/
@@ -300,7 +299,7 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "101" || confirm == "101")
                 {
-
+                    Debug.Log("256482314586");
                     triggerLighting = true;
                     /*-----重選樹-----*/
                     treerechoice = true;
