@@ -7032,7 +7032,7 @@ MonoBehaviour:
   - {fileID: 722316467}
   - {fileID: 209024823}
   plane_material: {fileID: 2100000, guid: d6ed2908d3035e14cb30c6f0d0ad20a2, type: 2}
-  m_alpha: 139
+  m_alpha: 0.379
 --- !u!4 &814865883
 Transform:
   m_ObjectHideFlags: 0
