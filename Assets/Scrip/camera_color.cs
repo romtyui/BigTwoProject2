@@ -6,10 +6,18 @@ using UnityEngine;
 public class camera_color : MonoBehaviour
 {
     public SunCalculator calculator;
-    [Header("§£¶PÆ…∂°™∫øO•˙")]
+    [Header("üÙπ‚ÓÅ…´")]
     public Color Day_color;
     public Color Night_color;
+    public Color camera_colors;
+
     public Light[] Lights;
+
+    [Header("üÙπ‚ûVÁR")]
+    public Material plane_material;
+    [SerializeField]
+    [Range(0, 1)]
+    private float m_alpha = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +34,11 @@ public class camera_color : MonoBehaviour
                 for (int i = 0; i < Lights.Length; i++) 
                 {
                     Lights[i].color = Night_color;
-                } 
+                                
+                }
+                camera_colors = plane_material.color;
+                camera_colors.a = m_alpha;
+                plane_material.color = camera_colors;
             }
             else if(calculator.GetComponent<SunCalculator>().m_Hour < 18 || calculator.GetComponent<SunCalculator>().m_Hour > 6)
             {
@@ -34,6 +46,10 @@ public class camera_color : MonoBehaviour
                 {
                     Lights[i].color = Day_color;
                 }
+                camera_colors = plane_material.color;
+                camera_colors.a = 0;
+                plane_material.color = camera_colors;
+
             }
         }
     }
