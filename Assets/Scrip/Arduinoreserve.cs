@@ -10,7 +10,7 @@ public class Arduinoreserve : MonoBehaviour
 {
     public Camera mainCamera; // 指定攝像機
 
-    public SerialPort sp = new SerialPort("com3", 38400);//com7
+    public SerialPort sp = new SerialPort("com7", 38400);//com7
     //public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
@@ -239,7 +239,7 @@ public class Arduinoreserve : MonoBehaviour
                 //        wavetreecheck = true;
                 //        WaveVector = 1;
                 //    }
-                jiggleChain.data.externalForce.y = Vectory;
+                jiggleChain.data.externalForce.y = Vectory * 10;
 
                 // 檢查條件是否滿足，然後設定旗標
                 if (treechoice == 0)
