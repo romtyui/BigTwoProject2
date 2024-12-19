@@ -136,7 +136,11 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _WindDensity: 0.5
+    - _WindStrength: 0.8
+    - _WineMovement: 0.2
     - _WorkflowMode: 1
+    - _Yaxis: 0.2
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
