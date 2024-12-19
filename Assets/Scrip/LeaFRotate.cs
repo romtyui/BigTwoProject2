@@ -5,16 +5,29 @@ using UnityEngine;
 public class LeaFRotate : MonoBehaviour
 {
     public Transform target;
+    public Arduinoreserve ard;
+    private Quaternion orignal_transform;
     // Start is called before the first frame update
     void Start()
     {
-        
+        orignal_transform = this.GetComponent<Transform>().rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Transform>().LookAt(GetSymmetryPoint());
+        if (ard != null) 
+        {
+            if (!ard.playing)
+            {
+                GetComponent<Transform>().LookAt(GetSymmetryPoint());
+            }
+            else 
+            {
+                this.transform.rotation = orignal_transform;
+            }
+        }
+
     }
     Vector3 GetSymmetryPoint()
     {

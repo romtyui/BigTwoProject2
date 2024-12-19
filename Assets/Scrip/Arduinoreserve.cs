@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
@@ -8,7 +8,7 @@ using System.Linq;
 
 public class Arduinoreserve : MonoBehaviour
 {
-    public Camera mainCamera; // «ü©wÄá¹³¾÷
+    public Camera mainCamera; // æŒ‡å®šæ”åƒæ©Ÿ
 
     public SerialPort sp = new SerialPort("com7", 38400);//com7
     //public SerialPort sp4 = new SerialPort("com4", 38400);
@@ -18,20 +18,22 @@ public class Arduinoreserve : MonoBehaviour
     public string wavedate;
     public string confirm;
     public float Timer;
-    /*-------------------------¤U«B-------------------------*/
-    [Header("¤U«B")]
+    public int nextScene;
+    public bool playing;
+    /*-------------------------ä¸‹é›¨-------------------------*/
+    [Header("ä¸‹é›¨")]
     public LightingCode lightingcode;
     public GameObject rain;
     public bool raincheck;
     public GameObject raindot;
     public bool raindotcheck;
     private Material rainmaterial;
-    /*-------------------------¤U«B-------------------------*/
+    /*-------------------------ä¸‹é›¨-------------------------*/
 
-    public bool triggerLighting = false;  // ¥Î©ó¥D°õ¦æºü§ó·sª¬ºAªººX¼Ğ
+    public bool triggerLighting = false;  // ç”¨æ–¼ä¸»åŸ·è¡Œç·’æ›´æ–°ç‹€æ…‹çš„æ——æ¨™
 
-    /*-----------------·n¾ğ----------------------*/
-    [Header("·n¾ğ")]
+    /*-----------------æ–æ¨¹----------------------*/
+    [Header("æ–æ¨¹")]
     public JiggleChain jiggleChain;
     public int treechoice;
     private float FVectory;
@@ -43,10 +45,10 @@ public class Arduinoreserve : MonoBehaviour
     public Material trunkmaterial;
     public bool wavetreecheck = false;
     public bool Zerowavetreecheck = false;
-    /*-----------------·n¾ğ----------------------*/
+    /*-----------------æ–æ¨¹----------------------*/
 
-    /*----------------¥áºµºµ----------------------*/
-    [Header("¥áºµºµ")]
+    /*----------------ä¸Ÿç†Šç†Š----------------------*/
+    [Header("ä¸Ÿç†Šç†Š")]
     //public GameObject Rock;
     //public float RockX;
     //public float RockY;
@@ -61,8 +63,11 @@ public class Arduinoreserve : MonoBehaviour
     public static bool bearwalkdone;
     public GameObject fruit;
     public bool dropcheck = false;
+    public Transform[] Abear_cameras;
     public float triggerTime=0;
-    /*----------------¥áºµºµ----------------------*/
+    private Quaternion targetRotation;
+    public GameObject block;
+    /*----------------ä¸Ÿç†Šç†Š----------------------*/
 
     // Start is called before the first frame update
     void Start()
@@ -71,16 +76,17 @@ public class Arduinoreserve : MonoBehaviour
         Renderer renderer = raindot.GetComponent<Renderer>();
         rainmaterial = renderer.material;
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
-        /*-----------------·n¾ğ----------------------*/
+        targetRotation = Quaternion.Euler(0, -90, -45);
+        /*-----------------æ–æ¨¹----------------------*/
         int i = 0;
         foreach (GameObject obj in Wavetree)
         {
             Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
 
-            // ÀË¬dª«¥ó¬O§_¦bµø³¥¤º
-            if (viewportPos.z > 0 && // ½T«Oª«¥ó¦bÄá¹³¾÷«e¤è
-                viewportPos.x > 0 && viewportPos.x < 1 && // X ¶b¦bµø¤f½d³ò¤º
-                viewportPos.y > 0 && viewportPos.y < 1)   // Y ¶b¦bµø¤f½d³ò¤º
+            // æª¢æŸ¥ç‰©ä»¶æ˜¯å¦åœ¨è¦–é‡å…§
+            if (viewportPos.z > 0 && // ç¢ºä¿ç‰©ä»¶åœ¨æ”åƒæ©Ÿå‰æ–¹
+                viewportPos.x > 0 && viewportPos.x < 1 && // X è»¸åœ¨è¦–å£ç¯„åœå…§
+                viewportPos.y > 0 && viewportPos.y < 1)   // Y è»¸åœ¨è¦–å£ç¯„åœå…§
             {
                 incameratree[i] = obj;
                 i++;
@@ -89,7 +95,7 @@ public class Arduinoreserve : MonoBehaviour
         treechoice = Random.Range(0, 3);
         jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
         jiggleChain.data.externalForce.y = 3;
-        /*-----------------·n¾ğ----------------------*/
+        /*-----------------æ–æ¨¹----------------------*/
         
         try
         {
@@ -112,11 +118,11 @@ public class Arduinoreserve : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ¦b¥D°õ¦æºü¤¤ÀË¬dºX¼Ğ¡A¨Ã®Ú¾Ú»İ­n±Ò°Ê lightingcode
+        // åœ¨ä¸»åŸ·è¡Œç·’ä¸­æª¢æŸ¥æ——æ¨™ï¼Œä¸¦æ ¹æ“šéœ€è¦å•Ÿå‹• lightingcode
         if (triggerLighting)
         {
             StartCoroutine(TriggerLightingEffect());
-            triggerLighting = false;  // ­«¸mºX¼Ğ
+            triggerLighting = false;  // é‡ç½®æ——æ¨™
             // lightingcode.enabled = false;
         }
 
@@ -136,26 +142,36 @@ public class Arduinoreserve : MonoBehaviour
         
         if (dropcheck == true)
         {
-            //RockX = Rock.transform.position.x;
-            //RockY = Rock.transform.position.y;
-            //RockZ = Rock.transform.position.z;
-            //time = Time.deltaTime;
-            //powT = (float)throwrocktotalTime * throwrocktotalTime;
-            //Rock.transform.localPosition = new Vector3((RockX * time) / throwrocktotalTime, (RockY * time) / throwrocktotalTime, ((RockZ + (float)(0.5 * gravty * powT))/throwrocktotalTime) * (time - (float)(0.5 * gravty * time*time)));
-    //        fruit.SetActive(true);
-            //triggerTime = Time.deltaTime;
-            //if(T>2)
-            //{
-
-           
-            BearWalkCheck.bearStartWalk = true;
-            bearwalk.SetActive(true);
-            if (bearwalkdone == true)
+            fruit.GetComponent<Rigidbody>().useGravity = true;
+            if(nextScene == 0) 
             {
-                bearscare.SetActive(true);
-                Debug.Log("±Ò°Ê");
-                dropcheck = false;
+                mainCamera.transform.position = Abear_cameras[1].transform.position;
+                mainCamera.transform.rotation = Abear_cameras[1].rotation;
             }
+            else if (nextScene == 1)
+            {
+                mainCamera.transform.position = Abear_cameras[2].transform.position;
+                mainCamera.transform.rotation = Abear_cameras[2].rotation;
+            }
+            else if (nextScene == 2) 
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 1f);
+                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
+                {
+                    transform.rotation = targetRotation; // ä¿®æ­£æœ€ç»ˆè§’åº¦
+                    block.SetActive(true);
+                    StartCoroutine(Waittime(1f));
+                }
+            }
+
+            //BearWalkCheck.bearStartWalk = true;
+            //bearwalk.SetActive(true);
+            //if (bearwalkdone == true)
+            //{
+            //    bearscare.SetActive(true);
+            //    Debug.Log("å•Ÿå‹•");
+            //    dropcheck = false;
+            //}
 
             //}
         }
@@ -188,10 +204,10 @@ public class Arduinoreserve : MonoBehaviour
             {
                 Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
                 int i =0;
-                // ÀË¬dª«¥ó¬O§_¦bµø³¥¤º
-                if (viewportPos.z > 0 && // ½T«Oª«¥ó¦bÄá¹³¾÷«e¤è
-                    viewportPos.x > 0 && viewportPos.x < 1 && // X ¶b¦bµø¤f½d³ò¤º
-                    viewportPos.y > 0 && viewportPos.y < 1)   // Y ¶b¦bµø¤f½d³ò¤º
+                // æª¢æŸ¥ç‰©ä»¶æ˜¯å¦åœ¨è¦–é‡å…§
+                if (viewportPos.z > 0 && // ç¢ºä¿ç‰©ä»¶åœ¨æ”åƒæ©Ÿå‰æ–¹
+                    viewportPos.x > 0 && viewportPos.x < 1 && // X è»¸åœ¨è¦–å£ç¯„åœå…§
+                    viewportPos.y > 0 && viewportPos.y < 1)   // Y è»¸åœ¨è¦–å£ç¯„åœå…§
                 {
                     incameratree[i] = obj;
                     i++;
@@ -217,7 +233,7 @@ public class Arduinoreserve : MonoBehaviour
                     Vectory = float.Parse(wavedate);
                     //WaveVector = (int)Vectory;
                 }
-                //int.TryParse(wavedate, out WaveVector);//§âsp4dateÂà¦¨int©ñ¨ìwaveVrctor
+                //int.TryParse(wavedate, out WaveVector);//æŠŠsp4dateè½‰æˆintæ”¾åˆ°waveVrctor
                 //int.TryParse(confirm, out WaveVector);
                 Debug.Log("Vectory:" + Vectory);
                 Debug.Log("WaveVectory:" + WaveVector);
@@ -241,16 +257,17 @@ public class Arduinoreserve : MonoBehaviour
                 //    }
                 jiggleChain.data.externalForce.y = Vectory * 10;
 
-                // ÀË¬d±ø¥ó¬O§_º¡¨¬¡AµM«á³]©wºX¼Ğ
+                // æª¢æŸ¥æ¢ä»¶æ˜¯å¦æ»¿è¶³ï¼Œç„¶å¾Œè¨­å®šæ——æ¨™
                 if (treechoice == 0)
                 {
                     if (confirm == "T")
                     {
                         Debug.Log("256482314586");
                         triggerLighting = true;
-                        /*-----­«¿ï¾ğ-----*/
+                        /*-----é‡é¸æ¨¹-----*/
                         treerechoice = true;
-                        /*-----­«¿ï¾ğ-----*/
+                        playing = true;
+                        /*-----é‡é¸æ¨¹-----*/
                     }
                 }
                 else if (treechoice == 1)
@@ -260,9 +277,11 @@ public class Arduinoreserve : MonoBehaviour
                         Debug.Log("256482314586");
                         raincheck = true;
                         raindotcheck = true;
-                        /*-----­«¿ï¾ğ-----*/
+                        /*-----é‡é¸æ¨¹-----*/
                         treerechoice = true;
-                        /*-----­«¿ï¾ğ-----*/
+                        /*-----é‡é¸æ¨¹-----*/
+                        playing = true;
+
                     }
                 }
                 
@@ -272,9 +291,11 @@ public class Arduinoreserve : MonoBehaviour
                     {
                         Debug.Log("256482314586");
                         dropcheck = true;
-                        /*-----­«¿ï¾ğ-----*/
+                        /*-----é‡é¸æ¨¹-----*/
                         treerechoice = true;
-                        /*-----­«¿ï¾ğ-----*/
+                        /*-----é‡é¸æ¨¹-----*/
+                        playing = true;
+
                     }
                 }
 
@@ -282,9 +303,11 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     Debug.Log("256482314586");
                     dropcheck = true;
-                    /*-----­«¿ï¾ğ-----*/
+                    /*-----é‡é¸æ¨¹-----*/
                     treerechoice = true;
-                    /*-----­«¿ï¾ğ-----*/
+                    /*-----é‡é¸æ¨¹-----*/
+                    playing = true;
+
                 }
 
                 if (wavedate == "102" || confirm == "102")
@@ -292,28 +315,44 @@ public class Arduinoreserve : MonoBehaviour
                     Debug.Log("256482314586");
                     raincheck = true;
                     raindotcheck = true;
-                    /*-----­«¿ï¾ğ-----*/
+                    /*-----é‡é¸æ¨¹-----*/
                     treerechoice = true;
-                    /*-----­«¿ï¾ğ-----*/
+                    /*-----é‡é¸æ¨¹-----*/
+                    playing = true;
+
                 }
 
                 if (wavedate == "101" || confirm == "101")
                 {
                     Debug.Log("256482314586");
                     triggerLighting = true;
-                    /*-----­«¿ï¾ğ-----*/
+                    /*-----é‡é¸æ¨¹-----*/
                     treerechoice = true;
-                    /*-----­«¿ï¾ğ-----*/
+                    /*-----é‡é¸æ¨¹-----*/
+                    playing = true;
+
                 }
             }
-            Thread.Sleep(10); // ±±¨îÅª¨úÀW²v¡AÁ×§K¹L«×¥e¥ÎCPU
+            Thread.Sleep(10); // æ§åˆ¶è®€å–é »ç‡ï¼Œé¿å…éåº¦å ç”¨CPU
         }
     }
 
     private IEnumerator TriggerLightingEffect()
     {
         lightingcode.enabled = true;
-        yield return new WaitForSeconds(0.5f);  // ¨Ò¦p©µ¿ğ0.1¬í
+        yield return new WaitForSeconds(0.5f);  // ä¾‹å¦‚å»¶é²0.1ç§’
         lightingcode.enabled = false;
+    }
+    private IEnumerator Waittime(float x)
+    {
+
+        bearscare.SetActive(false);
+
+        // ç­‰å¾…æŒ‡å®šçš„æ—¶é—´ï¼ˆæ¯”å¦‚ 2 ç§’ï¼‰
+        yield return new WaitForSeconds(x);
+        block.SetActive(false);
+        mainCamera.transform.position = Abear_cameras[0].transform.position;
+        mainCamera.transform.rotation = Abear_cameras[0].rotation;
+        dropcheck = false;
     }
 }
