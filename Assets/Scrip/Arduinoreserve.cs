@@ -78,7 +78,7 @@ public class Arduinoreserve : MonoBehaviour
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
         targetRotation = Quaternion.Euler(0, -90, -45);
         /*-----------------搖樹----------------------*/
-        int i = 0;
+        int k = 0;
         foreach (GameObject obj in Wavetree)
         {
             Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
@@ -88,13 +88,29 @@ public class Arduinoreserve : MonoBehaviour
                 viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
                 viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
             {
-                incameratree[i] = obj;
-                i++;
+                incameratree[k] = obj;
+                k++;
+                Debug.Log("k:" + k);
+                if(k>4)
+                {
+                    k = 0;
+                }
             }
         }
-        treechoice = Random.Range(0, 3);
-        jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
-        jiggleChain.data.externalForce.y = 3;
+        treechoice = Random.Range(0, 4);
+        if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                jiggleChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(j).GetComponent<JiggleChain>();
+                jiggleChain.data.externalForce.y = 3;
+            }
+        }
+        else
+        {
+            jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
+            jiggleChain.data.externalForce.y = 3;
+        }
         /*-----------------搖樹----------------------*/
 
         try
@@ -203,23 +219,28 @@ public class Arduinoreserve : MonoBehaviour
             foreach (GameObject obj in Wavetree)
             {
                 Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
-                int i = 0;
+                int l = 0;
                 // 檢查物件是否在視野內
                 if (viewportPos.z > 0 && // 確保物件在攝像機前方
                     viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
                     viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
                 {
-                    incameratree[i] = obj;
-                    i++;
+                    incameratree[l] = obj;
+                    l++;
+                    if (l > 4)
+                    {
+                        l = 0;
+                    }
                 }
             }
 
-            treechoice = Random.Range(0, 3);
+            treechoice = Random.Range(0, 4);
+            Debug.Log("treechoice:" + treechoice);
             if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
             {
                 for(int i = 0; i<10;i++)
                 {
-                    jiggleChain = incameratree[treechoice].transform.GetChild(10).transform.GetChild(i).GetComponent<JiggleChain>();
+                    jiggleChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(i).GetComponent<JiggleChain>();
                     jiggleChain.data.externalForce.y = Vectory * 10;
                 }
             }
@@ -246,8 +267,8 @@ public class Arduinoreserve : MonoBehaviour
                 }
                 //int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
                 //int.TryParse(confirm, out WaveVector);
-                Debug.Log("Vectory:" + Vectory);
-                Debug.Log("WaveVectory:" + WaveVector);
+            //    Debug.Log("Vectory:" + Vectory);
+            //    Debug.Log("WaveVectory:" + WaveVector);
                 //Debug.Log("Newdata:" + WaveVector);
                 //    if (WaveVector == 0)
                 //    {
