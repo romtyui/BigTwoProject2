@@ -91,7 +91,6 @@ public class Arduinoreserve : MonoBehaviour
             {
                 incameratree[k] = obj;
                 k++;
-                Debug.Log("k:" + k);
                 if(k>4)
                 {
                     k = 0;
