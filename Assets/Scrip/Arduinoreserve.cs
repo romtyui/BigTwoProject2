@@ -64,7 +64,7 @@ public class Arduinoreserve : MonoBehaviour
     public GameObject fruit;
     public bool dropcheck = false;
     public Transform[] Abear_cameras;
-    public float triggerTime=0;
+    public float triggerTime = 0;
     private Quaternion targetRotation;
     public GameObject block;
     /*----------------丟熊熊----------------------*/
@@ -96,7 +96,7 @@ public class Arduinoreserve : MonoBehaviour
         jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
         jiggleChain.data.externalForce.y = 3;
         /*-----------------搖樹----------------------*/
-        
+
         try
         {
             sp.Open();
@@ -113,7 +113,7 @@ public class Arduinoreserve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
     }
 
     void FixedUpdate()
@@ -130,8 +130,8 @@ public class Arduinoreserve : MonoBehaviour
         {
             rain.SetActive(true);
             rainmaterial.SetFloat("_Ripple_Strengh", 0.1f);
-            Timer = Timer+Time.fixedDeltaTime;
-            if(Timer>=300f)
+            Timer = Timer + Time.fixedDeltaTime;
+            if (Timer >= 300f)
             {
                 rain.SetActive(false);
                 rainmaterial.SetFloat("_Ripple_Strengh", 0f);
@@ -139,11 +139,11 @@ public class Arduinoreserve : MonoBehaviour
                 raincheck = false;
             }
         }
-        
+
         if (dropcheck == true)
         {
             fruit.GetComponent<Rigidbody>().useGravity = true;
-            if(nextScene == 0) 
+            if (nextScene == 0)
             {
                 mainCamera.transform.position = Abear_cameras[1].transform.position;
                 mainCamera.transform.rotation = Abear_cameras[1].rotation;
@@ -153,7 +153,7 @@ public class Arduinoreserve : MonoBehaviour
                 mainCamera.transform.position = Abear_cameras[2].transform.position;
                 mainCamera.transform.rotation = Abear_cameras[2].rotation;
             }
-            else if (nextScene == 2) 
+            else if (nextScene == 2)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 1f);
                 if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
@@ -175,7 +175,7 @@ public class Arduinoreserve : MonoBehaviour
 
             //}
         }
-        if(Zerowavetreecheck == true)
+        if (Zerowavetreecheck == true)
         {
             leavesmaterial.SetFloat("_WindDensity", FVectory);
             leavesmaterial.SetFloat("_WindMovement", FVectory);
@@ -186,7 +186,7 @@ public class Arduinoreserve : MonoBehaviour
             Zerowavetreecheck = false;
         }
 
-        else if(wavetreecheck == true)
+        else if (wavetreecheck == true)
         {
             leavesmaterial.SetFloat("_WindDensity", WaveVector);
             leavesmaterial.SetFloat("_WindMovement", WaveVector);
@@ -196,14 +196,14 @@ public class Arduinoreserve : MonoBehaviour
             trunkmaterial.SetFloat("_BlendStrength", 5f);
             wavetreecheck = false;
         }
-        
 
-        if(treerechoice == true)
+
+        if (treerechoice == true)
         {
             foreach (GameObject obj in Wavetree)
             {
                 Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
-                int i =0;
+                int i = 0;
                 // 檢查物件是否在視野內
                 if (viewportPos.z > 0 && // 確保物件在攝像機前方
                     viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
@@ -215,7 +215,18 @@ public class Arduinoreserve : MonoBehaviour
             }
 
             treechoice = Random.Range(0, 3);
-            jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
+            if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
+            {
+                for(int i = 0; i<10;i++)
+                {
+                    jiggleChain = incameratree[treechoice].transform.GetChild(10).transform.GetChild(i).GetComponent<JiggleChain>();
+                    jiggleChain.data.externalForce.y = Vectory * 10;
+                }
+            }
+            else
+            {
+                jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
+            }
             treerechoice = false;
         }
     }
@@ -228,7 +239,7 @@ public class Arduinoreserve : MonoBehaviour
             {
                 confirm = sp.ReadLine();
                 wavedate = sp.ReadLine();
-                if(wavedate != "T")
+                if (wavedate != "T")
                 {
                     Vectory = float.Parse(wavedate);
                     //WaveVector = (int)Vectory;
@@ -272,7 +283,7 @@ public class Arduinoreserve : MonoBehaviour
                 }
                 else if (treechoice == 1)
                 {
-                    if(confirm =="T")
+                    if (confirm == "T")
                     {
                         Debug.Log("256482314586");
                         raincheck = true;
@@ -284,10 +295,10 @@ public class Arduinoreserve : MonoBehaviour
 
                     }
                 }
-                
+
                 else if (treechoice == 2)
                 {
-                    if(confirm =="T")
+                    if (confirm == "T")
                     {
                         Debug.Log("256482314586");
                         dropcheck = true;
