@@ -34,7 +34,7 @@ public class Arduinoreserve : MonoBehaviour
 
     /*-----------------搖樹----------------------*/
     [Header("搖樹")]
-    public JiggleChain jiggleChain;
+    public JiggleChain[] jiggleChain;
     public int treechoice;
     private float FVectory;
     public static bool treerechoice = false;
@@ -58,6 +58,7 @@ public class Arduinoreserve : MonoBehaviour
     //public float gravty = 9.8f;
     //public float time;
     //private double powT;
+    public int count;
     public GameObject bearscare;
     public GameObject bearwalk;
     public static bool bearwalkdone;
@@ -90,29 +91,12 @@ public class Arduinoreserve : MonoBehaviour
             {
                 incameratree[k] = obj;
                 k++;
-                Debug.Log("k:" + k);
                 if(k>4)
                 {
                     k = 0;
                 }
             }
         }
-        treechoice = Random.Range(0, 4);
-        if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                jiggleChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(j).GetComponent<JiggleChain>();
-                jiggleChain.data.externalForce.y = 3;
-            }
-        }
-        else
-        {
-            jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
-            jiggleChain.data.externalForce.y = 3;
-        }
-        /*-----------------搖樹----------------------*/
-
         try
         {
             sp.Open();
@@ -124,6 +108,19 @@ public class Arduinoreserve : MonoBehaviour
         {
             Debug.LogError("Failed to open Serial Port: " + e.Message);
         }
+        treechoice = Random.Range(0, 4);
+        
+        Debug.Log(incameratree[treechoice].transform.GetChild(8).transform.childCount);
+        for (count = 0; count < incameratree[treechoice].transform.GetChild(8).transform.childCount; count++)
+        {
+            JiggleChain eachChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(count).GetComponent<JiggleChain>();
+            jiggleChain[count] = eachChain;
+            jiggleChain[count].data.externalForce.y = 3;
+        }
+        
+        treerechoice = true;
+        /*-----------------搖樹----------------------*/
+
     }
 
     // Update is called once per frame
@@ -235,21 +232,14 @@ public class Arduinoreserve : MonoBehaviour
             }
 
             treechoice = Random.Range(0, 4);
-            Debug.Log("treechoice:" + treechoice);
-            if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
-            {
-                for(int i = 0; i<10;i++)
-                {
-                    jiggleChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(i).GetComponent<JiggleChain>();
-                    jiggleChain.data.externalForce.y = Vectory * 10;
-                }
-            }
-            else
-            {
-                jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
-            }
             treerechoice = false;
         }
+            for (count = 0; count < incameratree[treechoice].transform.GetChild(8).transform.childCount; count++)
+            {
+                JiggleChain eachchain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(count).GetComponent<JiggleChain>();
+                jiggleChain[count] = eachchain;
+                jiggleChain[count].data.externalForce.y = Vectory * 3;
+            }
     }
 
     private void ReadSerialData()
@@ -267,8 +257,8 @@ public class Arduinoreserve : MonoBehaviour
                 }
                 //int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
                 //int.TryParse(confirm, out WaveVector);
-            //    Debug.Log("Vectory:" + Vectory);
-            //    Debug.Log("WaveVectory:" + WaveVector);
+                //    Debug.Log("Vectory:" + Vectory);
+                //    Debug.Log("WaveVectory:" + WaveVector);
                 //Debug.Log("Newdata:" + WaveVector);
                 //    if (WaveVector == 0)
                 //    {
@@ -287,7 +277,6 @@ public class Arduinoreserve : MonoBehaviour
                 //        wavetreecheck = true;
                 //        WaveVector = 1;
                 //    }
-                jiggleChain.data.externalForce.y = Vectory * 10;
 
                 // 檢查條件是否滿足，然後設定旗標
                 if (treechoice == 0)
