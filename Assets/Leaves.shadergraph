@@ -1019,8 +1019,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 2430.39990234375,
-            "y": 201.60003662109376
+            "x": 2703.199951171875,
+            "y": 152.8000030517578
         },
         "m_Blocks": [
             {
@@ -7364,7 +7364,7 @@
         "tex2d"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
