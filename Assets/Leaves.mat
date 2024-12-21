@@ -126,7 +126,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Falling: 0.439
+    - _Falling: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -156,6 +156,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FallColor: {r: 0.5188679, g: 0.23405842, b: 0.08027764, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SummerColor: {r: 0.03293858, g: 0.6313726, b: 0, a: 0}
+    - _SummerColor: {r: 0.3729975, g: 0.6226415, b: 0.15566038, a: 0}
     - _WinterColor: {r: 0.13207549, g: 0.10142401, b: 0.10142401, a: 0}
   m_BuildTextureStacks: []
