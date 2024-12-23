@@ -5,7 +5,7 @@ using System.IO.Ports;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialPort sp = new SerialPort("com7", 38400);
+    public SerialPort sp = new SerialPort("com4", 38400);
     private Thread serialThread;
     private float Pos;
     private int Olddate;
@@ -68,19 +68,23 @@ public class Arduino : MonoBehaviour
             // 計算目標角度
             int newQuadrant = Mathf.FloorToInt((transpos + 180f) / 90f) % 4;
             int targetAngle = newQuadrant * 90;
-            switch(newQuadrant)
+            switch (newQuadrant)
             {
                 case 0:
-                    Debug.Log("第一象限");
+                    Arduinoreserve.treerechoice = true;
+
                     break;
                 case 1:
-                    Debug.Log("第二象限");
+                    Arduinoreserve.treerechoice = true;
+
                     break;
                 case 2:
-                    Debug.Log("第三象限");
+                    Arduinoreserve.treerechoice = true;
+
                     break;
                 case 3:
-                    Debug.Log("第一象限");
+                    Arduinoreserve.treerechoice = true;
+
                     break;
             }
             Arduinoreserve.treerechoice = true;

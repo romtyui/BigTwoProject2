@@ -5,6 +5,8 @@ using System.IO.Ports;
 using System.Threading;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using Unity.VisualScripting;
 
 public class Arduinoreserve : MonoBehaviour
 {
@@ -34,12 +36,12 @@ public class Arduinoreserve : MonoBehaviour
 
     /*-----------------搖樹----------------------*/
     [Header("搖樹")]
-    public JiggleChain jiggleChain;
+    public JiggleChain[] jiggleChain;
     public int treechoice;
     private float FVectory;
     public static bool treerechoice = false;
-    public GameObject[] Wavetree;
-    public GameObject[] incameratree;
+    public List<GameObject> Wavetree; // 所有樹的集合
+    public List<GameObject> incameratree = new List<GameObject>(); // 攝像機內的樹集合
     public Material[] treematerial;
     public Material leavesmaterial;
     public Material trunkmaterial;
@@ -58,6 +60,7 @@ public class Arduinoreserve : MonoBehaviour
     //public float gravty = 9.8f;
     //public float time;
     //private double powT;
+    public int count;
     public GameObject bearscare;
     public GameObject bearwalk;
     public static bool bearwalkdone;
@@ -78,7 +81,7 @@ public class Arduinoreserve : MonoBehaviour
         rainmaterial.SetFloat("_Ripple_Strengh", 0);
         targetRotation = Quaternion.Euler(0, -90, -45);
         /*-----------------搖樹----------------------*/
-        int k = 0;
+
         foreach (GameObject obj in Wavetree)
         {
             Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
@@ -88,31 +91,13 @@ public class Arduinoreserve : MonoBehaviour
                 viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
                 viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
             {
-                incameratree[k] = obj;
-                k++;
-                Debug.Log("k:" + k);
-                if(k>4)
+                if (!incameratree.Contains(obj)) // 確保不重複添加
                 {
-                    k = 0;
+                    incameratree.Add(obj);
+                    Debug.Log("Object added to incameratree: " + obj.name);
                 }
             }
         }
-        treechoice = Random.Range(0, 4);
-        if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                jiggleChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(j).GetComponent<JiggleChain>();
-                jiggleChain.data.externalForce.y = 3;
-            }
-        }
-        else
-        {
-            jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
-            jiggleChain.data.externalForce.y = 3;
-        }
-        /*-----------------搖樹----------------------*/
-
         try
         {
             sp.Open();
@@ -124,16 +109,30 @@ public class Arduinoreserve : MonoBehaviour
         {
             Debug.LogError("Failed to open Serial Port: " + e.Message);
         }
+        treechoice = Random.Range(0, incameratree.Count);
+        Debug.Log("treechoice: " + treechoice);
+        treerechoice = true;
+
+        /*-----------------搖樹----------------------*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     void FixedUpdate()
     {
+        if (incameratree.Count == 0)
+        {
+            return;
+        }
+        else
+        {
+            ProcessJiggleChainsInRig(incameratree[treechoice]);
+
+        }
         // 在主執行緒中檢查旗標，並根據需要啟動 lightingcode
         if (triggerLighting)
         {
@@ -216,39 +215,10 @@ public class Arduinoreserve : MonoBehaviour
 
         if (treerechoice == true)
         {
-            foreach (GameObject obj in Wavetree)
-            {
-                Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
-                int l = 0;
-                // 檢查物件是否在視野內
-                if (viewportPos.z > 0 && // 確保物件在攝像機前方
-                    viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
-                    viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
-                {
-                    incameratree[l] = obj;
-                    l++;
-                    if (l > 4)
-                    {
-                        l = 0;
-                    }
-                }
-            }
-
-            treechoice = Random.Range(0, 4);
-            Debug.Log("treechoice:" + treechoice);
-            if (incameratree[treechoice] == GameObject.Find("TubbyTree_MeshAndBone"))
-            {
-                for(int i = 0; i<10;i++)
-                {
-                    jiggleChain = incameratree[treechoice].transform.GetChild(8).transform.GetChild(i).GetComponent<JiggleChain>();
-                    jiggleChain.data.externalForce.y = Vectory * 10;
-                }
-            }
-            else
-            {
-                jiggleChain = incameratree[treechoice].transform.GetChild(2).transform.GetChild(0).GetComponent<JiggleChain>();
-            }
+            UpdateIncameraTree();
+            Debug.Log("TreeReChoice: " + treerechoice);
             treerechoice = false;
+            Debug.Log("TreeReChoice: " + treerechoice);
         }
     }
 
@@ -267,8 +237,8 @@ public class Arduinoreserve : MonoBehaviour
                 }
                 //int.TryParse(wavedate, out WaveVector);//把sp4date轉成int放到waveVrctor
                 //int.TryParse(confirm, out WaveVector);
-            //    Debug.Log("Vectory:" + Vectory);
-            //    Debug.Log("WaveVectory:" + WaveVector);
+                //    Debug.Log("Vectory:" + Vectory);
+                //    Debug.Log("WaveVectory:" + WaveVector);
                 //Debug.Log("Newdata:" + WaveVector);
                 //    if (WaveVector == 0)
                 //    {
@@ -287,7 +257,6 @@ public class Arduinoreserve : MonoBehaviour
                 //        wavetreecheck = true;
                 //        WaveVector = 1;
                 //    }
-                jiggleChain.data.externalForce.y = Vectory * 10;
 
                 // 檢查條件是否滿足，然後設定旗標
                 if (treechoice == 0)
@@ -387,4 +356,76 @@ public class Arduinoreserve : MonoBehaviour
         mainCamera.transform.rotation = Abear_cameras[0].rotation;
         dropcheck = false;
     }
+
+    void ProcessJiggleChainsInRig(GameObject tree)
+    {
+        // 找到樹物件下的 "Rig" 子物件
+        Transform rig = tree.transform.Find("Rig");
+
+        if (rig != null)
+        {
+            // 遍歷 "Rig" 下的所有子物件，並處理每個名為 "JiggleChain" 的物件
+            foreach (Transform jiggleChain in rig)
+            {
+                if (jiggleChain.name == "JiggleChain")
+                {
+                    // 修改 "JiggleChain" 中的 .data.externalForce.y
+                    ModifyExternalForce(jiggleChain);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No 'Rig' child found in " + tree.name);
+        }
+    }
+
+    // 修改 JiggleChain 中的 .data.externalForce.y
+    void ModifyExternalForce(Transform jiggleChain)
+    {
+        // 獲取 JiggleChain 組件
+        JiggleChain jiggleData = jiggleChain.GetComponent<JiggleChain>();
+        if (jiggleData != null)
+        {
+            // 修改 externalForce.y 的值
+            jiggleData.data.externalForce.y = Vectory*3;
+
+            // 輸出修改結果
+
+        }
+        else
+        {
+            // 若沒有找到 JiggleChainData 組件，輸出提示
+            Debug.Log(jiggleChain.name + " does not have JiggleChainData component.");
+        }
+    }
+
+    void UpdateIncameraTree()
+    {
+        incameratree.Clear(); // 清空舊的視野內樹列表
+
+        foreach (GameObject obj in Wavetree)
+        {
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(obj.transform.position);
+
+            // 檢查物件是否在攝像機的視野內
+            if (viewportPos.z > 0 && // 確保物件在攝像機前方
+                viewportPos.x > 0 && viewportPos.x < 1 && // X 軸在視口範圍內
+                viewportPos.y > 0 && viewportPos.y < 1)   // Y 軸在視口範圍內
+            {
+                incameratree.Add(obj);
+            }
+        }
+
+        if (incameratree.Count > 0)
+        {
+            treechoice = Random.Range(0, incameratree.Count);
+            Debug.Log("Tree chosen: " + incameratree[treechoice].name);
+        }
+        else
+        {
+            Debug.LogWarning("No trees found in camera view.");
+        }
+    }
+
 }

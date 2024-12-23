@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 71047097}
   - component: {fileID: 71047098}
   m_Layer: 0
-  m_Name: JiggleChainHERE (11)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 158859587}
   - component: {fileID: 158859588}
   m_Layer: 0
-  m_Name: JiggleChainHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2630,7 @@ GameObject:
   - component: {fileID: 270317823}
   - component: {fileID: 270317824}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (8)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7828,7 +7828,7 @@ GameObject:
   - component: {fileID: 293435830}
   - component: {fileID: 293435831}
   m_Layer: 0
-  m_Name: JiggleChainHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7886,7 +7886,7 @@ GameObject:
   - component: {fileID: 299412885}
   - component: {fileID: 299412886}
   m_Layer: 0
-  m_Name: JiggleChainHERE (4)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8090,7 +8090,7 @@ GameObject:
   - component: {fileID: 312498691}
   - component: {fileID: 312498692}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (3)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8153,7 +8153,7 @@ GameObject:
   - component: {fileID: 314790757}
   - component: {fileID: 314790759}
   m_Layer: 0
-  m_Name: 
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9364,7 +9364,7 @@ GameObject:
   - component: {fileID: 542885419}
   - component: {fileID: 542885420}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (9)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9717,7 +9717,7 @@ GameObject:
   - component: {fileID: 578215008}
   - component: {fileID: 578215009}
   m_Layer: 0
-  m_Name: JiggleChainHERE (3)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9775,7 +9775,7 @@ GameObject:
   - component: {fileID: 606880163}
   - component: {fileID: 606880164}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (5)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9833,7 +9833,7 @@ GameObject:
   - component: {fileID: 607478202}
   - component: {fileID: 607478203}
   m_Layer: 0
-  m_Name: JiggleChainHERE (1)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10521,7 +10521,7 @@ GameObject:
   - component: {fileID: 690394405}
   - component: {fileID: 690394406}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (5)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10869,7 +10869,7 @@ GameObject:
   - component: {fileID: 764166712}
   - component: {fileID: 764166713}
   m_Layer: 0
-  m_Name: JiggleChainHERE (7)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11987,7 +11987,7 @@ GameObject:
   - component: {fileID: 865617948}
   - component: {fileID: 865617949}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (1)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12055,7 +12055,7 @@ GameObject:
   - component: {fileID: 873969386}
   - component: {fileID: 873969387}
   m_Layer: 0
-  m_Name: JiggleChainHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17044,7 +17044,7 @@ GameObject:
   - component: {fileID: 890880925}
   - component: {fileID: 890880926}
   m_Layer: 0
-  m_Name: JiggleChainHERE (6)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17102,7 +17102,7 @@ GameObject:
   - component: {fileID: 890923325}
   - component: {fileID: 890923326}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17518,7 +17518,7 @@ GameObject:
   - component: {fileID: 923791940}
   - component: {fileID: 923791941}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (6)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17754,7 +17754,7 @@ GameObject:
   - component: {fileID: 950923532}
   - component: {fileID: 950923533}
   m_Layer: 0
-  m_Name: JiggleChainHERE (9)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18155,7 +18155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf64caed698416242bbde067c6a728a9, type: 3}
   m_Name: 
@@ -18230,21 +18230,25 @@ MonoBehaviour:
   raindot: {fileID: 1001425118}
   raindotcheck: 0
   triggerLighting: 0
-  jiggleChain: {fileID: 1728223367}
+  jiggleChain: []
   treechoice: 0
   Wavetree:
   - {fileID: 282455398}
   - {fileID: 906223559}
   - {fileID: 2130089684}
-  incameratree:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 860390139}
+  - {fileID: 1588196426}
+  - {fileID: 908329}
+  - {fileID: 861650602}
+  - {fileID: 398276567}
+  - {fileID: 574511012}
+  incameratree: []
   treematerial: []
   leavesmaterial: {fileID: 0}
   trunkmaterial: {fileID: 0}
   wavetreecheck: 0
   Zerowavetreecheck: 0
+  count: 0
   bearscare: {fileID: 1268717931}
   bearwalk: {fileID: 2088452978}
   fruit: {fileID: 1889092652}
@@ -23644,7 +23648,7 @@ GameObject:
   - component: {fileID: 1012446334}
   - component: {fileID: 1012446335}
   m_Layer: 0
-  m_Name: 
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23702,7 +23706,7 @@ GameObject:
   - component: {fileID: 1026180700}
   - component: {fileID: 1026180701}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (3)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24001,7 +24005,7 @@ GameObject:
   - component: {fileID: 1100433836}
   - component: {fileID: 1100433837}
   m_Layer: 0
-  m_Name: JiggleChainHERE (8)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24290,7 +24294,7 @@ GameObject:
   - component: {fileID: 1159188969}
   - component: {fileID: 1159188970}
   m_Layer: 0
-  m_Name: JiggleChainHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24995,7 +24999,7 @@ GameObject:
   - component: {fileID: 1246047974}
   - component: {fileID: 1246047975}
   m_Layer: 0
-  m_Name: JiggleChainHERE (2)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25299,7 +25303,7 @@ GameObject:
   - component: {fileID: 1272955620}
   - component: {fileID: 1272955621}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (1)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25357,7 +25361,7 @@ GameObject:
   - component: {fileID: 1277771670}
   - component: {fileID: 1277771671}
   m_Layer: 0
-  m_Name: JiggleChainHERE (10)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28349,7 +28353,7 @@ GameObject:
   - component: {fileID: 1447944892}
   - component: {fileID: 1447944893}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (2)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28496,7 +28500,7 @@ GameObject:
   - component: {fileID: 1462920063}
   - component: {fileID: 1462920064}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (6)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28554,7 +28558,7 @@ GameObject:
   - component: {fileID: 1465318814}
   - component: {fileID: 1465318815}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28660,7 +28664,7 @@ GameObject:
   - component: {fileID: 1490050856}
   - component: {fileID: 1490050857}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (8)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29598,7 +29602,7 @@ GameObject:
   - component: {fileID: 1552417719}
   - component: {fileID: 1552417720}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (4)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30363,7 +30367,7 @@ GameObject:
   - component: {fileID: 1703399429}
   - component: {fileID: 1703399430}
   m_Layer: 0
-  m_Name: 
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30681,7 +30685,7 @@ GameObject:
   - component: {fileID: 1728223365}
   - component: {fileID: 1728223367}
   m_Layer: 0
-  m_Name: 
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31104,7 +31108,7 @@ GameObject:
   - component: {fileID: 1823561412}
   - component: {fileID: 1823561413}
   m_Layer: 0
-  m_Name: JiggleChainHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31300,7 +31304,7 @@ GameObject:
   - component: {fileID: 1856419790}
   - component: {fileID: 1856419791}
   m_Layer: 0
-  m_Name: 
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32062,7 +32066,7 @@ GameObject:
   - component: {fileID: 1960242180}
   - component: {fileID: 1960242181}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (7)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32218,7 +32222,7 @@ GameObject:
   - component: {fileID: 1979655768}
   - component: {fileID: 1979655769}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (2)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32434,7 +32438,7 @@ GameObject:
   - component: {fileID: 1985785222}
   - component: {fileID: 1985785223}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (9)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32492,7 +32496,7 @@ GameObject:
   - component: {fileID: 2046556885}
   - component: {fileID: 2046556886}
   m_Layer: 0
-  m_Name: JiggleChainHERE
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32606,7 +32610,7 @@ GameObject:
   - component: {fileID: 2072427538}
   - component: {fileID: 2072427539}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (7)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33167,7 +33171,7 @@ GameObject:
   - component: {fileID: 2120158056}
   - component: {fileID: 2120158057}
   m_Layer: 0
-  m_Name: JiggleChainPutHERE (4)
+  m_Name: JiggleChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
