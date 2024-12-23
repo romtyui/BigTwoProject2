@@ -9,14 +9,21 @@ public class Seasonal_Control : MonoBehaviour
 {
     public string now_time;
     private int now_hour;
+    private int now_minute,last_minute;
     public float timer;
     private float last_timer;
 
     public SunCalculator sunCalculator;
     public bool timeButton;
     public enum SeasonState { Spring, Summer, Autumn , Winter };
-    [Header("®”Ç°¼¾¹")]
+    [Header("·í«e©u¸`")]
     public SeasonState state;
+    [Header("©u¸`ÅÜ¤Æª«¥ó")]
+    public GameObject floor;
+    public Texture2D[] seasonal_textures;
+    public GameObject[] trees;
+    public Material seasonal_M;
+    private float count;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +45,7 @@ public class Seasonal_Control : MonoBehaviour
         }
         now_time = DateTime.Now.ToString();
         now_hour = DateTime.Now.Hour;
+        now_minute = DateTime.Now.Minute;
         if (now_hour >= 9 && now_hour < 11)
         {
             state = SeasonState.Spring;
@@ -59,18 +67,29 @@ public class Seasonal_Control : MonoBehaviour
         {
             sunCalculator.m_Hour = now_hour;
         }
+        if (now_minute != last_minute) 
+        {
+            count += 0.016f;
+            seasonal_M.SetFloat("_Falling", count);
+
+            last_minute = now_minute;
+        }
     }
     void seasonalControler() 
     {
         switch (state) 
         {
             case SeasonState.Spring:
+                floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
                 break;
             case SeasonState.Summer:
+                floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
                 break;
             case SeasonState.Autumn:
+                floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
                 break;
             case SeasonState.Winter:
+                floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[3]);
                 break;
         }
     }
