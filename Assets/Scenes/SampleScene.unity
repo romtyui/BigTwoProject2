@@ -19410,7 +19410,7 @@ MonoBehaviour:
   confirm: 
   Timer: 0
   nextScene: 0
-  playing: 0
+  playing: 1
   lightingcode: {fileID: 953616231}
   rain: {fileID: 969987301}
   raincheck: 0
@@ -26270,7 +26270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1236812190
 SphereCollider:
   m_ObjectHideFlags: 0
