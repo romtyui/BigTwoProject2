@@ -8800,6 +8800,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 270, z: 0}
+--- !u!1 &370518931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 370518932}
+  m_Layer: 0
+  m_Name: 58926
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &370518932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370518931}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.93436, y: -132.37701, z: 250.50146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &398276566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18919,6 +18950,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   now_time: 
+  now_hour: 0
+  now_minute: 0
+  last_minute: 0
   timer: 0
   sunCalculator: {fileID: 16806844}
   timeButton: 0
@@ -18942,6 +18976,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   seasonal_M: {fileID: 2100000, guid: e678689d633e0714b8a9d8d4b26237c2, type: 2}
+  Isgenarate: 0
+  fruit_numbers: 0
+  test: 0
 --- !u!1 &969987301
 GameObject:
   m_ObjectHideFlags: 0
@@ -35143,3 +35180,4 @@ SceneRoots:
   - {fileID: 607703252}
   - {fileID: 1038470159}
   - {fileID: 1487779031}
+  - {fileID: 370518932}
