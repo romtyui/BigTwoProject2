@@ -118,8 +118,9 @@ public class Arduinoreserve : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        
     }
 
     void FixedUpdate()
@@ -157,6 +158,7 @@ public class Arduinoreserve : MonoBehaviour
 
         if (dropcheck == true)
         {
+            Debug.Log("playing");
             fruit.GetComponent<Rigidbody>().useGravity = true;
             if (nextScene == 0)
             {

@@ -8,8 +8,8 @@ using UnityEngine;
 public class Seasonal_Control : MonoBehaviour
 {
     public string now_time;
-    private int now_hour;
-    private int now_minute,last_minute;
+    public int now_hour;
+    public int now_minute,last_minute;
     public float timer;
     private float last_timer;
 
@@ -24,6 +24,12 @@ public class Seasonal_Control : MonoBehaviour
     public GameObject[] trees;
     public Material seasonal_M;
     private float count;
+    [Header("果實生成紀錄器")]
+    public bool Isgenarate;
+    public int fruit_numbers;
+    [Header("測試用")]
+    public bool test;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +39,15 @@ public class Seasonal_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (fruit_numbers >= 10)
+        {
+            Isgenarate = false;
+            fruit_numbers = 0;
+        }
+
+
+
+
         timer = Time.time;
         if (timer > (last_timer + 25)) 
         {
@@ -46,19 +61,19 @@ public class Seasonal_Control : MonoBehaviour
         now_time = DateTime.Now.ToString();
         now_hour = DateTime.Now.Hour;
         now_minute = DateTime.Now.Minute;
-        if (now_hour >= 9 && now_hour < 11)
+        if (now_hour >= 9 && now_hour < 11 &&test ==false)
         {
             state = SeasonState.Spring;
         }
-        else if (now_hour >= 11 && now_hour < 13)
+        else if (now_hour >= 11 && now_hour < 13 && test == false)
         {
             state = SeasonState.Summer;
         }
-        else if (now_hour >= 13 && now_hour < 14)
+        else if (now_hour >= 13 && now_hour < 14 && test == false)
         {
             state = SeasonState.Autumn;
         }
-        else if (now_hour >= 14 && now_hour <= 15)
+        else if (now_hour >= 14 && now_hour <= 15 && test == false)
         {
             state = SeasonState.Winter;
         }
@@ -69,9 +84,9 @@ public class Seasonal_Control : MonoBehaviour
         }
         if (now_minute != last_minute) 
         {
-            count += 0.016f;
+            count += 0.002f;
             seasonal_M.SetFloat("_Falling", count);
-
+            Isgenarate = true;
             last_minute = now_minute;
         }
     }
