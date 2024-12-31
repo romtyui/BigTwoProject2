@@ -71,10 +71,22 @@ public class Arduinoreserve : MonoBehaviour
     private Quaternion targetRotation;
     public GameObject block;
     /*----------------丟熊熊----------------------*/
+    /*---------------------------------音效--------------------------------------*/
+    [Header("音效")]
+    public AudioSource BGM;
+    public AudioSource Audio;
+    public AudioClip thunderclip;
+    public AudioClip rainclip;
+    /*---------------------------------音效--------------------------------------*/
+
 
     // Start is called before the first frame update
     void Start()
     {
+        /*---------------------------------音效--------------------------------------*/
+        BGM.Play();
+        /*---------------------------------音效--------------------------------------*/
+
         rain.SetActive(false);
         Renderer renderer = raindot.GetComponent<Renderer>();
         rainmaterial = renderer.material;
@@ -151,6 +163,8 @@ public class Arduinoreserve : MonoBehaviour
             {
                 rain.SetActive(false);
                 rainmaterial.SetFloat("_Ripple_Strengh", 0f);
+                Audio.clip = null;
+                BGM.UnPause();
                 Timer = 0;
                 raincheck = false;
             }
@@ -265,7 +279,7 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if (confirm == "T")
                     {
-                        Debug.Log("256482314586");
+                        
                         triggerLighting = true;
                         /*-----重選樹-----*/
                         treerechoice = true;
@@ -277,9 +291,11 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if (confirm == "T")
                     {
-                        Debug.Log("256482314586");
                         raincheck = true;
                         raindotcheck = true;
+                        Audio.clip = rainclip;
+                        Audio.Play();
+                        BGM.Pause();
                         /*-----重選樹-----*/
                         treerechoice = true;
                         /*-----重選樹-----*/
@@ -292,7 +308,6 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if (confirm == "T")
                     {
-                        Debug.Log("256482314586");
                         dropcheck = true;
                         /*-----重選樹-----*/
                         treerechoice = true;
@@ -304,7 +319,6 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "103" || confirm == "103")
                 {
-                    Debug.Log("256482314586");
                     dropcheck = true;
                     /*-----重選樹-----*/
                     treerechoice = true;
@@ -315,7 +329,9 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "102" || confirm == "102")
                 {
-                    Debug.Log("256482314586");
+                    Audio.clip = rainclip;
+                    Audio.Play();
+                   BGM.Pause();
                     raincheck = true;
                     raindotcheck = true;
                     /*-----重選樹-----*/
@@ -327,7 +343,8 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "101" || confirm == "101")
                 {
-                    Debug.Log("256482314586");
+                    Audio.clip = thunderclip;
+                    Audio.Play();
                     triggerLighting = true;
                     /*-----重選樹-----*/
                     treerechoice = true;
