@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.16
-    agentHeight: 1.55
-    agentSlope: 23.7
-    agentClimb: 0.84
-    ledgeDropHeight: 0
-    maxJumpAcrossDistance: 0
+    agentRadius: 1.81
+    agentHeight: 1.68
+    agentSlope: 26.7
+    agentClimb: 1.33
+    ledgeDropHeight: 3.25
+    maxJumpAcrossDistance: 1.46
     minRegionArea: 2
-    manualCellSize: 1
-    cellSize: 0.85
+    manualCellSize: 0
+    cellSize: 0.6033333
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -169,11 +169,6 @@ Animator:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b77329a82187b245bec375f349fad39, type: 3}
   m_PrefabInstance: {fileID: 290431620}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2854142 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1063203228461421988, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-  m_PrefabInstance: {fileID: 234412134}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4136995
 PrefabInstance:
@@ -796,8 +791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1001 &35195706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1124,7 +1120,6 @@ GameObject:
   - component: {fileID: 62825351}
   - component: {fileID: 62825354}
   - component: {fileID: 62825353}
-  - component: {fileID: 62825352}
   m_Layer: 0
   m_Name: Plane.002 (2)
   m_TagString: Untagged
@@ -1147,22 +1142,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 90271295}
   m_LocalEulerAnglesHint: {x: -16.88, y: -36.11, z: -178.155}
---- !u!114 &62825352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62825350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!23 &62825353
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1754,11 +1733,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -612443091544979974, guid: 59663c72b33592346978c367ea974be2, type: 3}
   m_PrefabInstance: {fileID: 2138189199}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &123555061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6507901977716847365, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-  m_PrefabInstance: {fileID: 290431620}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &135628105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2585022914475931153, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
@@ -2057,8 +2031,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1001 &193189539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2426,6 +2401,7 @@ MonoBehaviour:
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
   minRange: 0.2
   maxRange: 0.5
+  tree_fruit_numbers: 0
 --- !u!1 &209024821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,21 +2775,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b77329a82187b245bec375f349fad39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 234412148}
-    - targetCorrespondingSourceObject: {fileID: 6507901977716847365, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1132326835}
     - targetCorrespondingSourceObject: {fileID: -8961359253771211100, guid: 3b77329a82187b245bec375f349fad39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 934335844}
-    - targetCorrespondingSourceObject: {fileID: 4767400413853537203, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 657588888}
-    - targetCorrespondingSourceObject: {fileID: -1063203228461421988, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 977099565}
-    - targetCorrespondingSourceObject: {fileID: 50754954277266222, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1436824488}
   m_SourcePrefab: {fileID: 100100000, guid: 3b77329a82187b245bec375f349fad39, type: 3}
 --- !u!1 &234412135 stripped
 GameObject:
@@ -3103,6 +3067,7 @@ MonoBehaviour:
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
   minRange: 0.2
   maxRange: 0.5
+  tree_fruit_numbers: 0
 --- !u!1001 &258215913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8422,9 +8387,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b77329a82187b245bec375f349fad39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 908330}
-    - targetCorrespondingSourceObject: {fileID: 6507901977716847365, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 899654786}
     - targetCorrespondingSourceObject: {fileID: -8961359253771211100, guid: 3b77329a82187b245bec375f349fad39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1418403414}
@@ -8872,9 +8834,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b77329a82187b245bec375f349fad39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1588196430}
-    - targetCorrespondingSourceObject: {fileID: 6507901977716847365, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1206289689}
     - targetCorrespondingSourceObject: {fileID: -8961359253771211100, guid: 3b77329a82187b245bec375f349fad39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 190803232}
@@ -9597,8 +9556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!4 &410895039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6688183582690604274, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
@@ -10655,8 +10615,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1001 &574511011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11294,8 +11255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &648853068
 GameObject:
   m_ObjectHideFlags: 0
@@ -11432,27 +11394,6 @@ Transform:
   - {fileID: 1982192900}
   m_Father: {fileID: 574511024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &657588885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4767400413853537203, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-  m_PrefabInstance: {fileID: 234412134}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &657588888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657588885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!1 &658160978
 GameObject:
   m_ObjectHideFlags: 0
@@ -12450,8 +12391,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &754077298
 GameObject:
   m_ObjectHideFlags: 0
@@ -12894,8 +12836,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &811950828
 GameObject:
   m_ObjectHideFlags: 0
@@ -13056,8 +12999,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1001 &833633281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18815,22 +18759,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -1538112130698044685, guid: 3b77329a82187b245bec375f349fad39, type: 3}
   m_PrefabInstance: {fileID: 290431620}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &899654786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123555061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!1 &902331903
 GameObject:
   m_ObjectHideFlags: 0
@@ -19303,8 +19231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!4 &930657256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8616562853047217044, guid: 3b77329a82187b245bec375f349fad39, type: 3}
@@ -19329,8 +19258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &940357534
 GameObject:
   m_ObjectHideFlags: 0
@@ -19991,7 +19921,12 @@ MonoBehaviour:
   sunCalculator: {fileID: 16806844}
   timeButton: 0
   state: 1
-  floor: {fileID: 1001425118}
+  terrain: {fileID: 1446650080}
+  currentLayers:
+  - {fileID: 8574412962073106934, guid: a2e28c20500c32b499fba647f63b73a9, type: 2}
+  - {fileID: 8574412962073106934, guid: 2add841ba2cdef34e9a8990e0f204b0f, type: 2}
+  - {fileID: 8574412962073106934, guid: 3e202decec5db6d4ea293bc4b59efef2, type: 2}
+  - {fileID: 8574412962073106934, guid: f7373c9574f418d41b787bc61022ec48, type: 2}
   seasonal_textures:
   - {fileID: 2800000, guid: 12ff3c37d59e28240a8f4643c3ead3d3, type: 3}
   - {fileID: 2800000, guid: f3c7e12938d22604eb51dc02b394dd80, type: 3}
@@ -25041,22 +24976,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &977099565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2854142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!4 &977375433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -601018869012299972, guid: 3b77329a82187b245bec375f349fad39, type: 3}
@@ -25441,6 +25360,10 @@ PrefabInstance:
     - target: {fileID: 3244681168862865977, guid: 4efa63ddf1df9c0438ef84a05f0413e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 3.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: 4efa63ddf1df9c0438ef84a05f0413e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5155288612038275026, guid: 4efa63ddf1df9c0438ef84a05f0413e2, type: 3}
       propertyPath: m_LocalScale.x
@@ -25919,8 +25842,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0
+  tree_fruit_numbers: 0
 --- !u!4 &1071691794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7540312364634166358, guid: 3b77329a82187b245bec375f349fad39, type: 3}
@@ -26152,27 +26076,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
   m_PrefabInstance: {fileID: 35195706}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1132326832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6507901977716847365, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-  m_PrefabInstance: {fileID: 234412134}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1132326835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132326832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!1 &1136414174
 GameObject:
   m_ObjectHideFlags: 0
@@ -26418,8 +26321,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!4 &1175015757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -84318722982578892, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
@@ -26768,27 +26672,6 @@ MonoBehaviour:
       y: 1
       z: 1
     m_MaintainOffset: 1
---- !u!1 &1206289686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6507901977716847365, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-  m_PrefabInstance: {fileID: 300012685}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1206289689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206289686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!1 &1206713870
 GameObject:
   m_ObjectHideFlags: 0
@@ -30013,6 +29896,7 @@ MonoBehaviour:
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
   minRange: 0.2
   maxRange: 0.5
+  tree_fruit_numbers: 0
 --- !u!4 &1372118109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4412760553310023756, guid: 918dcbe1ac2fe5a4083c1307a28888ba, type: 3}
@@ -30145,8 +30029,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!4 &1425829026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7000788095639363263, guid: 59663c72b33592346978c367ea974be2, type: 3}
@@ -30353,27 +30238,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434003568}
   m_Mesh: {fileID: -1211688430374067426, guid: 09b0eb78fc2fd9640941b4377531c812, type: 3}
---- !u!1 &1436824485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 50754954277266222, guid: 3b77329a82187b245bec375f349fad39, type: 3}
-  m_PrefabInstance: {fileID: 234412134}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1436824488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436824485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!1 &1445765582
 GameObject:
   m_ObjectHideFlags: 0
@@ -30466,7 +30330,7 @@ GameObject:
   - component: {fileID: 1446650079}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -31413,8 +31277,16 @@ PrefabInstance:
       value: -45.983
       objectReference: {fileID: 0}
     - target: {fileID: -5931372751300003811, guid: 09b0eb78fc2fd9640941b4377531c812, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5931372751300003811, guid: 09b0eb78fc2fd9640941b4377531c812, type: 3}
       propertyPath: m_TagString
       value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -5931372751300003811, guid: 09b0eb78fc2fd9640941b4377531c812, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5931372751300003811, guid: 09b0eb78fc2fd9640941b4377531c812, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -32518,6 +32390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trunk2
       objectReference: {fileID: 0}
+    - target: {fileID: -7421033346236238759, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 814744711922195842, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -32529,6 +32405,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
       propertyPath: m_Name
       value: CombineTree 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3fa3b340429e31d4d932cb46c8de2e86, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -32997,8 +32877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1001 &1720305690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33151,8 +33032,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &1726340430
 GameObject:
   m_ObjectHideFlags: 0
@@ -33420,8 +33302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!4 &1784795873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4928893220274619247, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
@@ -33844,8 +33727,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &1856419789
 GameObject:
   m_ObjectHideFlags: 0
@@ -34366,8 +34250,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &1909140855
 GameObject:
   m_ObjectHideFlags: 0
@@ -34657,8 +34542,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &1934857401
 GameObject:
   m_ObjectHideFlags: 0
@@ -34930,8 +34816,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &1960242179
 GameObject:
   m_ObjectHideFlags: 0
@@ -35830,7 +35717,6 @@ GameObject:
   - component: {fileID: 2011796408}
   - component: {fileID: 2011796411}
   - component: {fileID: 2011796410}
-  - component: {fileID: 2011796409}
   m_Layer: 0
   m_Name: Plane.002 (3)
   m_TagString: Untagged
@@ -35853,22 +35739,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 90271295}
   m_LocalEulerAnglesHint: {x: -41.56, y: -36.11, z: -178.155}
---- !u!114 &2011796409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011796407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!23 &2011796410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36069,7 +35939,6 @@ GameObject:
   - component: {fileID: 2052512594}
   - component: {fileID: 2052512597}
   - component: {fileID: 2052512596}
-  - component: {fileID: 2052512595}
   m_Layer: 0
   m_Name: Plane.002 (1)
   m_TagString: Untagged
@@ -36092,22 +35961,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 90271295}
   m_LocalEulerAnglesHint: {x: -37.6, y: -36.11, z: -178.155}
---- !u!114 &2052512595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052512593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66265b201f90d1f4789e95f9d1148922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controler: {fileID: 963194232}
-  fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
 --- !u!23 &2052512596
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36712,8 +36565,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!4 &2113892633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6585757580628166221, guid: 3b77329a82187b245bec375f349fad39, type: 3}
@@ -36738,8 +36592,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &2117712479
 GameObject:
   m_ObjectHideFlags: 0
@@ -36954,8 +36809,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controler: {fileID: 963194232}
   fruit: {fileID: 8417692449826955727, guid: 779eed41b482a284cabfe0e5dba9aa06, type: 3}
-  minRange: 0.2
-  maxRange: 0.5
+  minRange: -1.87
+  maxRange: 0.1
+  tree_fruit_numbers: 0
 --- !u!1 &2130089684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 918dcbe1ac2fe5a4083c1307a28888ba, type: 3}

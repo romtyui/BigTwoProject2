@@ -8,8 +8,10 @@ public class fruit_generate : MonoBehaviour
 {
     public Seasonal_Control controler;
     public GameObject fruit;
-    public float minRange = 0.2f; // 程絛瞅
-    public float maxRange = 0.5f; // 程絛瞅
+    public float minRange = 0.05f; // 程絛瞅
+    public float maxRange = 0.1f; // 程絛瞅
+    public float tree_fruit_numbers;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class fruit_generate : MonoBehaviour
             {
                 int i =Random.Range(0, 100);
                 Debug.Log(i);
-                if (i > 25) 
+                if (i > 50) 
                 {
                     SpawnPrefabOnRandomSide();
                 }
@@ -108,7 +110,12 @@ public class fruit_generate : MonoBehaviour
 
         // ネΘ竚ネΘ箇
         Quaternion rotation = Quaternion.Euler(-90f, 0f, 0f);
-        Instantiate(fruit, spawnPosition, rotation);
+        if (tree_fruit_numbers <= 10) 
+        {
+            GameObject obj =  Instantiate(fruit, spawnPosition, rotation);
+            obj.GetComponent<fruit_code>().tree = this.gameObject;
+            tree_fruit_numbers++;
+        }
         controler.fruit_numbers++;
         Debug.Log("ネΘ!");
     }
