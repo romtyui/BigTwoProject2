@@ -103,19 +103,20 @@ public class Seasonal_Control : MonoBehaviour
         switch (state) 
         {
             case SeasonState.Spring:
-                terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[0] };
+                terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[0];
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
                 break;
             case SeasonState.Summer:
-                terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[1] };
+                terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[1];
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
                 break;
             case SeasonState.Autumn:
-                terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[2] };
+                terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[2];
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
                 break;
             case SeasonState.Winter:
-                terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };
+                terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[3];
+                //terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[3]);
                 break;
         }
