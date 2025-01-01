@@ -1200,10 +1200,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -500.7999572753906,
-            "y": 243.99998474121095,
-            "width": 207.99996948242188,
-            "height": 431.99993896484377
+            "x": -498.3999938964844,
+            "y": 192.80001831054688,
+            "width": 208.00003051757813,
+            "height": 431.9999694824219
         }
     },
     "m_Slots": [
@@ -1236,7 +1236,7 @@
         "tex2d"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -1959,10 +1959,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -702.3999633789063,
-            "y": 250.3999786376953,
-            "width": 139.199951171875,
-            "height": 33.59999084472656
+            "x": -727.2000122070313,
+            "y": 232.0,
+            "width": 138.4000244140625,
+            "height": 33.600006103515628
         }
     },
     "m_Slots": [
