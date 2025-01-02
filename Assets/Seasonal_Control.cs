@@ -119,24 +119,28 @@ public class Seasonal_Control : MonoBehaviour
         {
             case SeasonState.Spring:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[0];
+                sunCalculator.m_Month = 4;
                 grass_M.SetFloat("_alpha", 0.5f);
 
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
                 break;
             case SeasonState.Summer:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[1];
+                sunCalculator.m_Month = 7;
                 grass_M.SetFloat("_alpha", 0.5f);
 
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
                 break;
             case SeasonState.Autumn:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[2];
+                sunCalculator.m_Month = 10;
                 grass_M.SetFloat("_alpha", 0.5f);
 
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
                 break;
             case SeasonState.Winter:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[3];
+                sunCalculator.m_Month = 1;
                 grass_M.SetFloat("_alpha", 0.5f);
 
                 //terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };

@@ -24,7 +24,7 @@ namespace nminhhoangit.SunCalculator
         //
         [SerializeField]
         [Range(1, 12)]
-        private int m_Month = 1;
+        public int m_Month = 1;
         //
         [SerializeField]
         [Range(1, 31)]

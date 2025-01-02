@@ -9946,7 +9946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &386572606
 Transform:
   m_ObjectHideFlags: 0
@@ -21092,7 +21092,7 @@ MonoBehaviour:
   timeButton: 0
   rendering_obj: {fileID: 386572607}
   colorAdjustments__obj: {fileID: 0}
-  brightness: -4
+  brightness: -3
   state: 1
   terrain: {fileID: 1446650080}
   currentLayers:
