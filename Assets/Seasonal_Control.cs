@@ -13,8 +13,10 @@ public class Seasonal_Control : MonoBehaviour
     public float timer;
     private float last_timer;
 
+    [Header("渲染區")]
     public SunCalculator sunCalculator;
     public bool timeButton;
+  
     public enum SeasonState { Spring, Summer, Autumn , Winter };
     [Header("當前季節")]
     public SeasonState state;
@@ -34,12 +36,6 @@ public class Seasonal_Control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        last_timer = timer;
-        TerrainLayer[] terrainLayers = terrain.terrainData.terrainLayers;
-        currentLayers[0] = terrainLayers[0];
-        currentLayers[1] = terrainLayers[3];
-        currentLayers[2] = terrainLayers[7];
-        currentLayers[3] = terrainLayers[6];
 
     }
 
@@ -60,6 +56,7 @@ public class Seasonal_Control : MonoBehaviour
         {
             last_timer = timer;
             sunCalculator.m_Hour += 1;
+           
             if (sunCalculator.m_Hour > 23) 
             {
                 sunCalculator.m_Hour  = 0;

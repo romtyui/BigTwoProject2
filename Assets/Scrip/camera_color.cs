@@ -6,7 +6,7 @@ using UnityEngine;
 public class camera_color : MonoBehaviour
 {
     public SunCalculator calculator;
-    [Header("燈光顏色")]
+    [Header("燈光?色")]
     public Color Day_color;
     public Color Night_color;
     public Color camera_colors;
@@ -27,7 +27,7 @@ public class camera_color : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (calculator != null)
+        if (calculator != null && camera_colors != null)
         {
             if (calculator.GetComponent<SunCalculator>().m_Hour > 18 || calculator.GetComponent<SunCalculator>().m_Hour < 6) 
             {
