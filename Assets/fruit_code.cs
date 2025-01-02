@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static Seasonal_Control;
 
 public class fruit_code : MonoBehaviour
 {
@@ -31,6 +33,10 @@ public class fruit_code : MonoBehaviour
                 //Debug.Log(life);
                 rb.useGravity = true;
             }
+        }
+        if (controler.state != SeasonState.Summer) 
+        {
+            rb.useGravity = true;
         }
     }
     private void OnCollisionEnter(Collision collision)

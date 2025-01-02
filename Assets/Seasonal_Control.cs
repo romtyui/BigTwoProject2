@@ -29,7 +29,7 @@ public class Seasonal_Control : MonoBehaviour
     public TerrainLayer[] currentLayers; // 新的 Terrain Layer
     public Texture2D[] seasonal_textures;
     public GameObject[] trees;
-    public Material seasonal_M;
+    public Material seasonal_M,grass_M;
     private float count;
     [Header("果實生成紀錄器")]
     public bool Isgenarate;
@@ -51,10 +51,6 @@ public class Seasonal_Control : MonoBehaviour
             Isgenarate = false;
             fruit_numbers = 0;
         }
-
-
-
-
         timer = Time.time;
         if (timer > (last_timer + 1))
         {
@@ -123,20 +119,29 @@ public class Seasonal_Control : MonoBehaviour
         {
             case SeasonState.Spring:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[0];
+                grass_M.SetFloat("_alpha", 0.5f);
+
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
                 break;
             case SeasonState.Summer:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[1];
+                grass_M.SetFloat("_alpha", 0.5f);
+
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
                 break;
             case SeasonState.Autumn:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[2];
+                grass_M.SetFloat("_alpha", 0.5f);
+
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
                 break;
             case SeasonState.Winter:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[3];
+                grass_M.SetFloat("_alpha", 0.5f);
+
                 //terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[3]);
+                grass_M.SetFloat("_alpha", 2.0f);
                 break;
         }
     }
