@@ -18,7 +18,9 @@ public class Seasonal_Control : MonoBehaviour
     [Header("渲染區")]
     public SunCalculator sunCalculator;
     public bool timeButton;
-    public Volume rendering_obj;  // 引用场景中的 Volume 组件
+    public Volume[] rendering_objs;  // 引用场景中的 Volume 组件
+    public GameObject[] objs;
+    public int seasonal_numbers;
     public ColorAdjustments colorAdjustments__obj;
     public float brightness;
     public enum SeasonState { Spring, Summer, Autumn , Winter };
@@ -70,7 +72,7 @@ public class Seasonal_Control : MonoBehaviour
                 brightness = 0f;
             }
 
-            if (rendering_obj.profile.TryGet<ColorAdjustments>(out colorAdjustments__obj))
+            if (rendering_objs[seasonal_numbers].profile.TryGet<ColorAdjustments>(out colorAdjustments__obj))
             {
                 // 在这里修改 Intensity
                 colorAdjustments__obj.postExposure.value = brightness;
@@ -121,28 +123,72 @@ public class Seasonal_Control : MonoBehaviour
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[0];
                 sunCalculator.m_Month = 4;
                 grass_M.SetFloat("_alpha", 0.5f);
-
+                seasonal_numbers = 0;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i != seasonal_numbers)
+                    {
+                        objs[i].SetActive(false);
+                    }
+                    else
+                    {
+                        objs[seasonal_numbers].SetActive(true);
+                    }
+                }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
                 break;
             case SeasonState.Summer:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[1];
                 sunCalculator.m_Month = 7;
                 grass_M.SetFloat("_alpha", 0.5f);
-
+                seasonal_numbers = 1;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i != seasonal_numbers)
+                    {
+                        objs[i].gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        objs[seasonal_numbers].gameObject.SetActive(true);
+                    }
+                }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
                 break;
             case SeasonState.Autumn:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[2];
                 sunCalculator.m_Month = 10;
                 grass_M.SetFloat("_alpha", 0.5f);
-
+                seasonal_numbers = 2;
+                for (int i = 0; i < seasonal_numbers; i++)
+                {
+                    if (i != 3)
+                    {
+                        objs[i].gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        objs[seasonal_numbers].gameObject.SetActive(true);
+                    }
+                }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
                 break;
             case SeasonState.Winter:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[3];
                 sunCalculator.m_Month = 1;
                 grass_M.SetFloat("_alpha", 0.5f);
-
+                seasonal_numbers = 3;
+                for (int i = 0; i < seasonal_numbers; i++) 
+                {
+                    if (i != 3)
+                    {
+                        objs[i].gameObject.SetActive(false);
+                    }
+                    else 
+                    {
+                        objs[seasonal_numbers].gameObject.SetActive(true);
+                    }
+                }
                 //terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[3]);
                 grass_M.SetFloat("_alpha", 2.0f);
