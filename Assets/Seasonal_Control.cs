@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Seasonal_Control : MonoBehaviour
 {
@@ -16,7 +18,9 @@ public class Seasonal_Control : MonoBehaviour
     [Header("渲染區")]
     public SunCalculator sunCalculator;
     public bool timeButton;
-  
+    public Volume rendering_obj;  // 引用场景中的 Volume 组件
+    public ColorAdjustments colorAdjustments__obj;
+    public float brightness;
     public enum SeasonState { Spring, Summer, Autumn , Winter };
     [Header("當前季節")]
     public SeasonState state;
@@ -52,11 +56,29 @@ public class Seasonal_Control : MonoBehaviour
 
 
         timer = Time.time;
-        if (timer > (last_timer + 25)) 
+        if (timer > (last_timer + 1))
         {
             last_timer = timer;
             sunCalculator.m_Hour += 1;
-           
+            if (sunCalculator.m_Hour <= 6)
+            {
+                brightness += 0.5f;
+            }
+            else if (sunCalculator.m_Hour >= 20)
+            {
+                
+                brightness -= 0.8f;
+            }
+            else if(sunCalculator.m_Hour > 6 && sunCalculator.m_Hour < 20)
+            {
+                brightness = 0f;
+            }
+
+            if (rendering_obj.profile.TryGet<ColorAdjustments>(out colorAdjustments__obj))
+            {
+                // 在这里修改 Intensity
+                colorAdjustments__obj.postExposure.value = brightness;
+            }
             if (sunCalculator.m_Hour > 23) 
             {
                 sunCalculator.m_Hour  = 0;
