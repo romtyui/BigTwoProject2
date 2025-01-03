@@ -7,6 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Linq;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using Unity.VisualScripting;
+using nminhhoangit.SunCalculator;
+using static Seasonal_Control;
 
 public class Arduinoreserve : MonoBehaviour
 {
@@ -25,11 +27,12 @@ public class Arduinoreserve : MonoBehaviour
     /*-------------------------下雨-------------------------*/
     [Header("下雨")]
     public LightingCode lightingcode;
-    public GameObject rain;
+    public GameObject rain,snow;
     public bool raincheck;
     public GameObject raindot;
     public bool raindotcheck;
     private Material rainmaterial;
+    private Seasonal_Control control;
     /*-------------------------下雨-------------------------*/
 
     public bool triggerLighting = false;  // 用於主執行緒更新狀態的旗標
@@ -126,7 +129,7 @@ public class Arduinoreserve : MonoBehaviour
         treerechoice = true;
 
         /*-----------------搖樹----------------------*/
-
+        control = this.GetComponent<Seasonal_Control>();
     }
 
     // Update is called once per frame
@@ -156,12 +159,28 @@ public class Arduinoreserve : MonoBehaviour
 
         if (raincheck /*|| raindotcheck*/ == true)
         {
-            rain.SetActive(true);
+            if (control.state == SeasonState.Winter)
+            {
+                snow.SetActive(true);
+
+            }
+            else 
+            {
+                rain.SetActive(true);
+            }
             rainmaterial.SetFloat("_Ripple_Strengh", 0.1f);
             Timer = Timer + Time.fixedDeltaTime;
             if (Timer >= 300f)
             {
-                rain.SetActive(false);
+                if (control.state == SeasonState.Winter)
+                {
+                    snow.SetActive(false);
+
+                }
+                else
+                {
+                    rain.SetActive(false);
+                }
                 rainmaterial.SetFloat("_Ripple_Strengh", 0f);
                 Audio.clip = null;
                 BGM.UnPause();
