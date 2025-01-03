@@ -67,7 +67,7 @@ public class Seasonal_Control : MonoBehaviour
             else if (sunCalculator.m_Hour >= 20)
             {
                 
-                brightness -= 0.8f;
+                brightness -= 0.625f;
             }
             else if(sunCalculator.m_Hour > 6 && sunCalculator.m_Hour < 20)
             {
@@ -129,13 +129,22 @@ public class Seasonal_Control : MonoBehaviour
                 renderer_light.color = light_colors[0];
                 for (int i = 0; i < 4; i++)
                 {
-                    if (i != seasonal_numbers)
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
                     {
                         objs[i].SetActive(false);
                     }
                     else
                     {
-                        objs[seasonal_numbers].SetActive(true);
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
                     }
                 }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
@@ -148,13 +157,22 @@ public class Seasonal_Control : MonoBehaviour
                 renderer_light.color = light_colors[0];
                 for (int i = 0; i < 4; i++)
                 {
-                    if (i != seasonal_numbers)
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
                     {
                         objs[i].gameObject.SetActive(false);
                     }
                     else
                     {
-                        objs[seasonal_numbers].SetActive(true);
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
                     }
                 }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
@@ -167,13 +185,22 @@ public class Seasonal_Control : MonoBehaviour
                 renderer_light.color = light_colors[0];
                 for (int i = 0; i < 4; i++)
                 {
-                    if (i != seasonal_numbers)
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
                     {
                         objs[i].gameObject.SetActive(false);
                     }
                     else
                     {
-                        objs[seasonal_numbers].SetActive(true);
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
                     }
                 }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
@@ -186,13 +213,22 @@ public class Seasonal_Control : MonoBehaviour
                 renderer_light.color = light_colors[1];
                 for (int i = 0; i < 4; i++) 
                 {
-                    if (i != seasonal_numbers)
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
                     {
                         objs[i].gameObject.SetActive(false);
                     }
                     else 
                     {
-                        objs[seasonal_numbers].SetActive(true);
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
                     }
                 }
                 //terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };

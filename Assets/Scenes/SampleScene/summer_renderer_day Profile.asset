@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8719941996982048069
+--- !u!114 &-2183738614406706344
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,32 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
-  m_Name: ShadowsMidtonesHighlights
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
   active: 1
-  shadows:
+  postExposure:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.56789637, z: 0.5516463, w: 0.49947438}
-  midtones:
+    m_Value: 0.51
+  contrast:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9077016, z: 0.76550007, w: -0.35226074}
-  highlights:
+    m_Value: 18.7
+  colorFilter:
     m_OverrideState: 1
-    m_Value: {x: 0.961834, y: 0.9788492, z: 1, w: 0.042234458}
-  shadowsStart:
+    m_Value: {r: 1, g: 0.91013944, b: 0.7327044, a: 1}
+  hueShift:
     m_OverrideState: 1
     m_Value: 0
-  shadowsEnd:
+  saturation:
     m_OverrideState: 1
-    m_Value: 0.6
-  highlightsStart:
-    m_OverrideState: 1
-    m_Value: 0.55
-  highlightsEnd:
-    m_OverrideState: 1
-    m_Value: 1
---- !u!114 &-6696605109850077621
+    m_Value: 35.4
+--- !u!114 &-611506207931828583
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,22 +46,22 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.93
+    m_Value: 0.55
   intensity:
     m_OverrideState: 1
-    m_Value: 2.91
+    m_Value: 2.09
   scatter:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.891
   clamp:
     m_OverrideState: 1
-    m_Value: 65460.04
+    m_Value: 65472
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -80,34 +74,6 @@ MonoBehaviour:
     dimension: 1
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 2.38
---- !u!114 &-424671626891839959
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
-  m_EditorClassIdentifier: 
-  active: 1
-  postExposure:
-    m_OverrideState: 1
-    m_Value: -3.17
-  contrast:
-    m_OverrideState: 1
-    m_Value: 22.4
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 0.585, g: 0.585, b: 0.585, a: 1}
-  hueShift:
-    m_OverrideState: 1
-    m_Value: 0
-  saturation:
-    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -119,14 +85,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: GameObject (1) Profile
+  m_Name: summer_renderer_day Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -6696605109850077621}
-  - {fileID: -424671626891839959}
-  - {fileID: 6966776600644757098}
-  - {fileID: -8719941996982048069}
---- !u!114 &6966776600644757098
+  - {fileID: -611506207931828583}
+  - {fileID: -2183738614406706344}
+  - {fileID: 8032389544403263677}
+  - {fileID: 6495374222856537072}
+--- !u!114 &6495374222856537072
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.98164904, z: 0.77618563, w: 0.14195585}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: -0.13144052}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  shadowsStart:
+    m_OverrideState: 1
+    m_Value: 0
+  shadowsEnd:
+    m_OverrideState: 1
+    m_Value: 0.3
+  highlightsStart:
+    m_OverrideState: 1
+    m_Value: 0.55
+  highlightsEnd:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &8032389544403263677
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,23 +146,23 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 2
   acesPreset:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 3
   hueShiftAmount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   detectPaperWhite:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   paperWhite:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 300
   detectBrightnessLimits:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   minNits:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.005
   maxNits:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1000
