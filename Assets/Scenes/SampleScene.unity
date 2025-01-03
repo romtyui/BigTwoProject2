@@ -21150,8 +21150,8 @@ Transform:
   - {fileID: 969987302}
   - {fileID: 1268717932}
   - {fileID: 304603208}
-  - {fileID: 301122718}
   - {fileID: 696366977}
+  - {fileID: 301122718}
   - {fileID: 563586702}
   - {fileID: 1131461960}
   - {fileID: 519909519}
@@ -21317,7 +21317,7 @@ MonoBehaviour:
   - {r: 1, g: 0.92156863, b: 0.70980394, a: 0}
   - {r: 0.7019608, g: 0.8509804, b: 1, a: 1}
   - {r: 0.78039217, g: 0.9019608, b: 0.93333334, a: 1}
-  state: 2
+  state: 0
   terrain: {fileID: 1446650080}
   currentLayers:
   - {fileID: 8574412962073106934, guid: a2e28c20500c32b499fba647f63b73a9, type: 2}
