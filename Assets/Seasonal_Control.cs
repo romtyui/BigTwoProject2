@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Seasonal_Control : MonoBehaviour
 {
@@ -16,7 +18,13 @@ public class Seasonal_Control : MonoBehaviour
     [Header("渲染區")]
     public SunCalculator sunCalculator;
     public bool timeButton;
-  
+    public Volume[] rendering_objs;  // 引用场景中的 Volume 组件
+    public GameObject[] objs;
+    public int seasonal_numbers;
+    public ColorAdjustments colorAdjustments__obj;
+    public float brightness;
+    public Light renderer_light;
+    public Color[] light_colors;
     public enum SeasonState { Spring, Summer, Autumn , Winter };
     [Header("當前季節")]
     public SeasonState state;
@@ -25,7 +33,7 @@ public class Seasonal_Control : MonoBehaviour
     public TerrainLayer[] currentLayers; // 新的 Terrain Layer
     public Texture2D[] seasonal_textures;
     public GameObject[] trees;
-    public Material seasonal_M;
+    public Material seasonal_M,grass_M;
     private float count;
     [Header("果實生成紀錄器")]
     public bool Isgenarate;
@@ -47,16 +55,30 @@ public class Seasonal_Control : MonoBehaviour
             Isgenarate = false;
             fruit_numbers = 0;
         }
-
-
-
-
         timer = Time.time;
-        if (timer > (last_timer + 25)) 
+        if (timer > (last_timer + 1))
         {
             last_timer = timer;
             sunCalculator.m_Hour += 1;
-           
+            if (sunCalculator.m_Hour <= 6)
+            {
+                brightness += 0.5f;
+            }
+            else if (sunCalculator.m_Hour >= 20)
+            {
+                
+                brightness -= 0.625f;
+            }
+            else if(sunCalculator.m_Hour > 6 && sunCalculator.m_Hour < 20)
+            {
+                brightness = 0f;
+            }
+
+            if (rendering_objs[seasonal_numbers].profile.TryGet<ColorAdjustments>(out colorAdjustments__obj))
+            {
+                // 在这里修改 Intensity
+                colorAdjustments__obj.postExposure.value = brightness;
+            }
             if (sunCalculator.m_Hour > 23) 
             {
                 sunCalculator.m_Hour  = 0;
@@ -101,20 +123,117 @@ public class Seasonal_Control : MonoBehaviour
         {
             case SeasonState.Spring:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[0];
+                sunCalculator.m_Month = 4;
+                grass_M.SetFloat("_alpha", 0.5f);
+                seasonal_numbers = 0;
+                renderer_light.color = light_colors[0];
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
+                    {
+                        objs[i].SetActive(false);
+                    }
+                    else
+                    {
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
+                    }
+                }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[0]);
                 break;
             case SeasonState.Summer:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[1];
+                sunCalculator.m_Month = 7;
+                grass_M.SetFloat("_alpha", 0.5f);
+                seasonal_numbers = 1;
+                renderer_light.color = light_colors[0];
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
+                    {
+                        objs[i].gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
+                    }
+                }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[1]);
                 break;
             case SeasonState.Autumn:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[2];
+                sunCalculator.m_Month = 10;
+                grass_M.SetFloat("_alpha", 0.5f);
+                seasonal_numbers = 2;
+                renderer_light.color = light_colors[0];
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
+                    {
+                        objs[i].gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
+                    }
+                }
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[2]);
                 break;
             case SeasonState.Winter:
                 terrain.GetComponent<Terrain>().terrainData.terrainLayers[0].diffuseTexture = seasonal_textures[3];
+                sunCalculator.m_Month = 1;
+                grass_M.SetFloat("_alpha", 0.5f);
+                seasonal_numbers = 3;
+                renderer_light.color = light_colors[1];
+                for (int i = 0; i < 4; i++) 
+                {
+                    if (i != seasonal_numbers && i != (seasonal_numbers + 4))
+                    {
+                        objs[i].gameObject.SetActive(false);
+                    }
+                    else 
+                    {
+                        if (sunCalculator.m_Hour >= 6 && sunCalculator.m_Hour < 20)
+                        {
+                            objs[seasonal_numbers].SetActive(true);
+                            objs[seasonal_numbers + 4].SetActive(false);
+                        }
+                        else
+                        {
+                            objs[seasonal_numbers].SetActive(false);
+                            objs[seasonal_numbers + 4].SetActive(true);
+                        }
+                    }
+                }
                 //terrain.terrainData.terrainLayers = new TerrainLayer[] { currentLayers[3] };
                 //floor.GetComponent<MeshRenderer>().materials[0].SetTexture("_Albedo", seasonal_textures[3]);
+                grass_M.SetFloat("_alpha", 2.0f);
                 break;
         }
     }

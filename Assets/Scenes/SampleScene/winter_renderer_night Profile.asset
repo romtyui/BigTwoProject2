@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8719941996982048069
+--- !u!114 &-7659550236130281012
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,26 +15,26 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.56789637, z: 0.5516463, w: 0.49947438}
+    m_Value: {x: 0.40246242, y: 0.42453653, z: 1, w: 0.3101999}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9077016, z: 0.76550007, w: -0.35226074}
+    m_Value: {x: 0.9596192, y: 1, z: 0.97916067, w: -0.14195585}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.961834, y: 0.9788492, z: 1, w: 0.042234458}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.031545743}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
   shadowsEnd:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.3
   highlightsStart:
     m_OverrideState: 1
     m_Value: 0.55
   highlightsEnd:
     m_OverrideState: 1
     m_Value: 1
---- !u!114 &-6696605109850077621
+--- !u!114 &-3863447606131874452
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,22 +52,22 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.93
+    m_Value: 0.92
   intensity:
     m_OverrideState: 1
-    m_Value: 2.91
+    m_Value: 3.09
   scatter:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.808
   clamp:
     m_OverrideState: 1
-    m_Value: 65460.04
+    m_Value: 65472
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -80,8 +80,25 @@ MonoBehaviour:
     dimension: 1
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 2.38
---- !u!114 &-424671626891839959
+    m_Value: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: winter_renderer_night Profile
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -3863447606131874452}
+  - {fileID: 3486307504638778269}
+  - {fileID: 8818576537167473421}
+  - {fileID: -7659550236130281012}
+--- !u!114 &3486307504638778269
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,37 +113,20 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -3.17
+    m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 22.4
+    m_Value: 3.8
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.585, g: 0.585, b: 0.585, a: 1}
+    m_Value: {r: 0.722464, g: 0.77254003, b: 0.856, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 10
   saturation:
     m_OverrideState: 1
-    m_Value: 20
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: GameObject (1) Profile
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: -6696605109850077621}
-  - {fileID: -424671626891839959}
-  - {fileID: 6966776600644757098}
-  - {fileID: -8719941996982048069}
---- !u!114 &6966776600644757098
+    m_Value: -5
+--- !u!114 &8818576537167473421
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,23 +146,23 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 2
   acesPreset:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 3
   hueShiftAmount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   detectPaperWhite:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   paperWhite:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 300
   detectBrightnessLimits:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   minNits:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.005
   maxNits:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1000

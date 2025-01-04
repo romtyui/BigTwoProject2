@@ -59,6 +59,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
+    - _alpha: 2
     - _metallic: 0
     - _scale: 0.001
     - _smoothness: 0
