@@ -21154,8 +21154,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.118788846, y: 0.030909676, z: 0.004409847, w: 0.99242854}
   m_LocalPosition: {x: -9.19, y: 2.72, z: -23.68}
-  m_LocalRotation: {x: 0.1461362, y: -0.04496226, z: -0.030035486, w: -0.9877857}
-  m_LocalPosition: {x: -7.64, y: 5.37, z: -23.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21176,7 +21174,6 @@ Transform:
   - {fileID: 1855714188}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -13.654, y: -1436.442, z: 0.083}
-  m_LocalEulerAnglesHint: {x: -16.942, y: -1075.2, z: 2.768}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21263,15 +21260,15 @@ MonoBehaviour:
   jiggleChain: []
   treechoice: 0
   Wavetree:
-  - {fileID: 232751432}
-  - {fileID: 906223559}
+  - {fileID: 1208334448}
+  - {fileID: 42423204}
   - {fileID: 2130089684}
   - {fileID: 860390139}
   - {fileID: 1588196426}
-  - {fileID: 908329}
-  - {fileID: 0}
+  - {fileID: 1695265217}
   - {fileID: 398276567}
   - {fileID: 574511012}
+  - {fileID: 906223559}
   incameratree: []
   treematerial: []
   leavesmaterial: {fileID: 0}
@@ -28088,11 +28085,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.31
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.72
-      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2070d865e27c5c4885b64cc08aabf88, type: 3}
       propertyPath: m_LocalPosition.y
