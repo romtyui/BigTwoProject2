@@ -14,7 +14,7 @@ public class Arduinoreserve : MonoBehaviour
 {
     public Camera mainCamera; // 指定攝像機
 
-    public SerialPort sp = new SerialPort("com7", 38400);//com7
+    public SerialPort sp = new SerialPort("com9", 38400);//com7
     //public SerialPort sp4 = new SerialPort("com4", 38400);
     private Thread serialThread;
     public int WaveVector;
@@ -117,11 +117,13 @@ public class Arduinoreserve : MonoBehaviour
         {
             sp.Open();
             //sp4.Open();
+            Debug.Log("try");
             serialThread = new Thread(ReadSerialData);
             serialThread.Start();
         }
         catch (System.Exception e)
         {
+           Debug.Log("第一層");
             Debug.LogError("Failed to open Serial Port: " + e.Message);
         }
         treechoice = Random.Range(0, incameratree.Count);
@@ -135,7 +137,11 @@ public class Arduinoreserve : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        if(sp.IsOpen)
+        {
+            Debug.Log("開了");
+        }
+
     }
 
     void FixedUpdate()
@@ -261,10 +267,13 @@ public class Arduinoreserve : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("第一層");
             if (sp.IsOpen)
             {
+                Debug.Log("第二層");
                 confirm = sp.ReadLine();
                 wavedate = sp.ReadLine();
+                Debug.Log(wavedate);
                 if (wavedate != "T")
                 {
                     Vectory = float.Parse(wavedate);
@@ -426,7 +435,7 @@ public class Arduinoreserve : MonoBehaviour
         if (jiggleData != null)
         {
             // 修改 externalForce.y 的值
-            jiggleData.data.externalForce.y = Vectory*3;
+            jiggleData.data.externalForce.y = Vectory*0.9f;
 
             // 輸出修改結果
 
@@ -455,7 +464,7 @@ public class Arduinoreserve : MonoBehaviour
             }
         }
 
-        if (incameratree.Count > 0)
+        if (treerechoice)
         {
             treechoice = Random.Range(0, incameratree.Count);
             Debug.Log("Tree chosen: " + incameratree[treechoice].name);

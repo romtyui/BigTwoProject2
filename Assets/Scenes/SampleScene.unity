@@ -2990,14 +2990,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 1376725032}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!114 &71087028
 MonoBehaviour:
@@ -31522,14 +31522,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 160568000}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1001 &300012685
 PrefabInstance:
@@ -42698,14 +42698,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 1495321607}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1 &589914352
 GameObject:
@@ -43070,14 +43070,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 342746938}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1 &610452704
 GameObject:
@@ -52610,14 +52610,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 118939323}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!4 &767763067 stripped
 Transform:
@@ -64407,14 +64407,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 1884284695}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1 &890923324
 GameObject:
@@ -66031,14 +66031,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 503228106}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1 &953616230
 GameObject:
@@ -66582,13 +66582,10 @@ MonoBehaviour:
   Wavetree:
   - {fileID: 1208334448}
   - {fileID: 42423204}
-  - {fileID: 0}
   - {fileID: 860390139}
   - {fileID: 1588196426}
-  - {fileID: 0}
   - {fileID: 398276567}
   - {fileID: 574511012}
-  - {fileID: 0}
   incameratree: []
   treematerial: []
   leavesmaterial: {fileID: 0}
@@ -74326,14 +74323,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 957413124}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1 &1100569388
 GameObject:
@@ -77388,14 +77385,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 1425829026}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!1 &1246596372
 GameObject:
@@ -78118,14 +78115,14 @@ MonoBehaviour:
     root: {fileID: 1681021778}
     tip: {fileID: 618836712}
     mass: 60
-    stiffness: 0.5
+    stiffness: 0.426
     dynamicOffset: 4
     localAimVector: {x: 1, y: 0, z: 0}
     localUpVector: {x: 0, y: 1, z: 0}
     rollEnabled: 0
     gravity: {x: 0, y: 0, z: 0}
     externalForce: {x: 0, y: 0, z: 0}
-    damping: 0
+    damping: 0.225
     motionDecay: 0.1
 --- !u!4 &1280065107 stripped
 Transform:
