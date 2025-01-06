@@ -67,7 +67,7 @@ public class Arduino : MonoBehaviour
         {
             // 計算目標角度
             int newQuadrant = Mathf.FloorToInt((transpos + 180f) / 90f) % 4;
-            int targetAngle = newQuadrant * 90;
+            int targetAngle = newQuadrant * -90;
             switch (newQuadrant)
             {
                 case 0:

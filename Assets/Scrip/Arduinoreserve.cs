@@ -137,10 +137,7 @@ public class Arduinoreserve : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(sp.IsOpen)
-        {
-            Debug.Log("開了");
-        }
+
 
     }
 
@@ -267,13 +264,10 @@ public class Arduinoreserve : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("第一層");
             if (sp.IsOpen)
             {
-                Debug.Log("第二層");
                 confirm = sp.ReadLine();
                 wavedate = sp.ReadLine();
-                Debug.Log(wavedate);
                 if (wavedate != "T")
                 {
                     Vectory = float.Parse(wavedate);
@@ -435,7 +429,7 @@ public class Arduinoreserve : MonoBehaviour
         if (jiggleData != null)
         {
             // 修改 externalForce.y 的值
-            jiggleData.data.externalForce.y = Vectory*0.9f;
+            jiggleData.data.externalForce.y = Vectory*2f;
 
             // 輸出修改結果
 
