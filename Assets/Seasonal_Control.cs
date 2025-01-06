@@ -56,7 +56,7 @@ public class Seasonal_Control : MonoBehaviour
             fruit_numbers = 0;
         }
         timer = Time.time;
-        if (timer > (last_timer + 1))
+        if (timer > (last_timer + 25))
         {
             last_timer = timer;
             sunCalculator.m_Hour += 1;
@@ -110,7 +110,7 @@ public class Seasonal_Control : MonoBehaviour
         }
         if (now_minute != last_minute) 
         {
-            count += 0.002f;
+            count += 0.005f;
             seasonal_M.SetFloat("_Falling", count);
             Isgenarate = true;
             StartCoroutine(Waittime(0.1f));

@@ -7,12 +7,12 @@ using static UnityEngine.GraphicsBuffer;
 public class BearWalkCheck : MonoBehaviour
 {
     public Arduinoreserve ard;
-    public float wanderRadius = 10f;  // 游荡半径
-    public float wanderTimer = 5f;   // 每次改变位置的时间间隔
+    public float wanderRadius = 10f; // 游荡半径
+    public float wanderTimer = 5f;  // 每次改变位置的时间间隔
 
     public Animator animator;
-    private NavMeshAgent agent;      // 导航网格代理
-    public float timer;             // 计时器
+    private NavMeshAgent agent;     // 导航网格代理
+    public float timer;            // 计时器
 
     private Vector3 newPos;
     public int count = 0;
@@ -21,11 +21,15 @@ public class BearWalkCheck : MonoBehaviour
     public GameObject scare_bear;
     public bool Isplay_bearscare;
 
+    public Bounds movementBounds;  // 限制范围
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
 
+        // 设置默认活动范围（可以根据需要调整）
+        movementBounds = new Bounds(transform.position, new Vector3(20, 20, 20));
     }
 
     [System.Obsolete]
@@ -33,7 +37,7 @@ public class BearWalkCheck : MonoBehaviour
     {
         if (ard.playing)
         {
-            if (Isplay_bearscare) 
+            if (Isplay_bearscare)
             {
                 animator.CrossFade("take_01_Walk_bear_idle", -0.1f, 0);
 
@@ -50,25 +54,17 @@ public class BearWalkCheck : MonoBehaviour
                 this.gameObject.SetActive(false);
                 main_camera.GetComponent<Arduinoreserve>().nextScene = 2;
             }
-
         }
-        else 
+        else
         {
             if (timer >= wanderTimer)
             {
                 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
 
-                if (this.gameObject.transform.position == newPos)
-                {
-
-
-                }
-                else
+                if (movementBounds.Contains(newPos)) // 检查新位置是否在范围内
                 {
                     agent.SetDestination(newPos);
                     animator.CrossFade("take_01_Walk_bear_walk", 0.1f, 0);
-
-
                     timer = 0;
                 }
             }
@@ -93,9 +89,7 @@ public class BearWalkCheck : MonoBehaviour
                 }
                 timer += Time.deltaTime;
             }
-
         }
-
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
@@ -110,39 +104,9 @@ public class BearWalkCheck : MonoBehaviour
         return navHit.position;
     }
 
-    public void OnBearWalkEnd()
-    {
-        //Arduinoreserve.bearwalkdone = true;
-    }
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //    if(Arduinoreserve.bearwalkdone == true)
-    //    {
-    //        //Walkbear.SetActive(false);
-    //    }
-    //    else
-    //    {
-    //        //Walkbear.SetActive (true);
-    //        //Vector3 targetpos = new Vector3(transform.position.x, transform.position.y, -15f);
-    //        //this.transform.position = Vector3.Lerp(transform.position, targetpos, Time.deltaTime *0.4f);
-    //    }
-    //}
     private IEnumerator Waittime(float x)
     {
-
-
-        // 等待指定的时间（比如 2 秒）
         yield return new WaitForSeconds(x);
-
     }
 
 }
