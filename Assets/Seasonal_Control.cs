@@ -32,9 +32,9 @@ public class Seasonal_Control : MonoBehaviour
     public Terrain terrain; // 將你的 Terrain 拖入此處
     public TerrainLayer[] currentLayers; // 新的 Terrain Layer
     public Texture2D[] seasonal_textures;
-    public GameObject[] trees;
     public Material seasonal_M,grass_M;
     private float count;
+    public GameObject[] fireflys;
     [Header("果實生成紀錄器")]
     public bool Isgenarate;
     public int fruit_numbers;
@@ -115,6 +115,20 @@ public class Seasonal_Control : MonoBehaviour
             Isgenarate = true;
             StartCoroutine(Waittime(0.1f));
             
+        }
+        if (state == SeasonState.Summer && (sunCalculator.m_Hour >= 20 || sunCalculator.m_Hour < 6))
+        {
+            for (int i = 0; i < fireflys.Length; i++)
+            {
+                fireflys[i].SetActive(true);
+            }
+        }
+        else 
+        {
+            for (int i = 0; i < fireflys.Length; i++)
+            {
+                fireflys[i].SetActive(false);
+            }
         }
     }
     void seasonalControler() 
