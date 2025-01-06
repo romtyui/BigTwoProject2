@@ -137,8 +137,6 @@ public class Arduinoreserve : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
-
     }
 
     void FixedUpdate()
@@ -167,7 +165,7 @@ public class Arduinoreserve : MonoBehaviour
                 snow.SetActive(true);
 
             }
-            else 
+            else
             {
                 rain.SetActive(true);
             }
@@ -258,10 +256,25 @@ public class Arduinoreserve : MonoBehaviour
             treerechoice = false;
             Debug.Log("TreeReChoice: " + treerechoice);
         }
+
+        if (treechoice == 1 && confirm == "T")
+        {
+            Audio.clip = rainclip;
+            Audio.Play();
+            BGM.Pause();
+        }
+
+        if (treechoice == 0 && confirm == "T")
+        {
+            Audio.clip = thunderclip;
+            Audio.Play();
+            
+        }
     }
 
     private void ReadSerialData()
     {
+        
         while (true)
         {
             if (sp.IsOpen)
@@ -315,9 +328,7 @@ public class Arduinoreserve : MonoBehaviour
                     {
                         raincheck = true;
                         raindotcheck = true;
-                        Audio.clip = rainclip;
-                        Audio.Play();
-                        BGM.Pause();
+                       
                         /*-----重選樹-----*/
                         treerechoice = true;
                         /*-----重選樹-----*/
@@ -330,7 +341,7 @@ public class Arduinoreserve : MonoBehaviour
                 {
                     if (confirm == "T")
                     {
-                        dropcheck = true;
+                        //dropcheck = true;
                         /*-----重選樹-----*/
                         treerechoice = true;
                         /*-----重選樹-----*/
@@ -339,21 +350,18 @@ public class Arduinoreserve : MonoBehaviour
                     }
                 }
 
-                if (wavedate == "103" || confirm == "103")
-                {
-                    dropcheck = true;
-                    /*-----重選樹-----*/
-                    treerechoice = true;
-                    /*-----重選樹-----*/
-                    playing = true;
-
-                }
+//                if (wavedate == "103" || confirm == "103")
+//                {
+//                    dropcheck = true;
+//                    /*-----重選樹-----*/
+//                    treerechoice = true;
+//                    /*-----重選樹-----*/
+//                    playing = true;
+//
+//                }
 
                 if (wavedate == "102" || confirm == "102")
                 {
-                    Audio.clip = rainclip;
-                    Audio.Play();
-                   BGM.Pause();
                     raincheck = true;
                     raindotcheck = true;
                     /*-----重選樹-----*/
@@ -365,8 +373,7 @@ public class Arduinoreserve : MonoBehaviour
 
                 if (wavedate == "101" || confirm == "101")
                 {
-                    Audio.clip = thunderclip;
-                    Audio.Play();
+                    
                     triggerLighting = true;
                     /*-----重選樹-----*/
                     treerechoice = true;
@@ -430,6 +437,7 @@ public class Arduinoreserve : MonoBehaviour
         {
             // 修改 externalForce.y 的值
             jiggleData.data.externalForce.y = Vectory*2f;
+            //jiggleData.data.externalForce.x = Vectory*2f;
 
             // 輸出修改結果
 
