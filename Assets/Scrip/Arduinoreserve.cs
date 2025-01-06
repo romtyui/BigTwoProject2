@@ -80,6 +80,7 @@ public class Arduinoreserve : MonoBehaviour
     public AudioSource Audio;
     public AudioClip thunderclip;
     public AudioClip rainclip;
+    public AudioClip blown_leaves_clip;
     /*---------------------------------音效--------------------------------------*/
 
 
@@ -192,28 +193,28 @@ public class Arduinoreserve : MonoBehaviour
 
         if (dropcheck == true)
         {
-            Debug.Log("playing");
-            fruit.GetComponent<Rigidbody>().useGravity = true;
-            if (nextScene == 0)
-            {
-                mainCamera.transform.position = Abear_cameras[1].transform.position;
-                mainCamera.transform.rotation = Abear_cameras[1].rotation;
-            }
-            else if (nextScene == 1)
-            {
-                mainCamera.transform.position = Abear_cameras[2].transform.position;
-                mainCamera.transform.rotation = Abear_cameras[2].rotation;
-            }
-            else if (nextScene == 2)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 1f);
-                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
-                {
-                    transform.rotation = targetRotation; // 修正最终角度
-                    block.SetActive(true);
-                    StartCoroutine(Waittime(1f));
-                }
-            }
+            //Debug.Log("playing");
+            //fruit.GetComponent<Rigidbody>().useGravity = true;
+            //if (nextScene == 0)
+            //{
+            //    mainCamera.transform.position = Abear_cameras[1].transform.position;
+            //    mainCamera.transform.rotation = Abear_cameras[1].rotation;
+            //}
+            //else if (nextScene == 1)
+            //{
+            //    mainCamera.transform.position = Abear_cameras[2].transform.position;
+            //    mainCamera.transform.rotation = Abear_cameras[2].rotation;
+            //}
+            //else if (nextScene == 2)
+            //{
+            //    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 1f);
+            //    if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
+            //    {
+            //        transform.rotation = targetRotation; // 修正最终角度
+            //        block.SetActive(true);
+            //        StartCoroutine(Waittime(1f));
+            //    }
+            //}
 
             //BearWalkCheck.bearStartWalk = true;
             //bearwalk.SetActive(true);
@@ -332,7 +333,7 @@ public class Arduinoreserve : MonoBehaviour
                         /*-----重選樹-----*/
                         treerechoice = true;
                         /*-----重選樹-----*/
-                        playing = true;
+                         //playing = true;
 
                     }
                 }
@@ -345,7 +346,7 @@ public class Arduinoreserve : MonoBehaviour
                         /*-----重選樹-----*/
                         treerechoice = true;
                         /*-----重選樹-----*/
-                        playing = true;
+                        //playing = true;
 
                     }
                 }
@@ -367,7 +368,7 @@ public class Arduinoreserve : MonoBehaviour
                     /*-----重選樹-----*/
                     treerechoice = true;
                     /*-----重選樹-----*/
-                    playing = true;
+                    //playing = true;
 
                 }
 
@@ -378,7 +379,7 @@ public class Arduinoreserve : MonoBehaviour
                     /*-----重選樹-----*/
                     treerechoice = true;
                     /*-----重選樹-----*/
-                    playing = true;
+                    //playing = true;
 
                 }
             }
@@ -438,7 +439,9 @@ public class Arduinoreserve : MonoBehaviour
             // 修改 externalForce.y 的值
             jiggleData.data.externalForce.y = Vectory*2f;
             //jiggleData.data.externalForce.x = Vectory*2f;
-
+            Audio.clip = blown_leaves_clip;
+            Audio.Play();
+            BGM.Pause();
             // 輸出修改結果
 
         }
