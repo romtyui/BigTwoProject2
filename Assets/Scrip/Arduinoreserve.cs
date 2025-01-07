@@ -439,9 +439,9 @@ public class Arduinoreserve : MonoBehaviour
             // 修改 externalForce.y 的值
             jiggleData.data.externalForce.y = Vectory*2f;
             //jiggleData.data.externalForce.x = Vectory*2f;
-            Audio.clip = blown_leaves_clip;
-            Audio.Play();
-            BGM.Pause();
+            //Audio.clip = blown_leaves_clip;
+            //Audio.Play();
+            //BGM.Pause();
             // 輸出修改結果
 
         }
